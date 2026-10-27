@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>M&M Shop</title>
+
+    <link rel="stylesheet" href="M&M_Shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Myproject/Listproduct.css">
+    <link rel="stylesheet" href="Final_Footer/footer.css">
+    <link rel="stylesheet" href="BodyWeb/Style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="logo">
+            <h1>M&M</h1>
+            <p>FASHION STORE</p>
+        </div>
+
+        <!-- Thanh tìm kiếm -->
+        <div class="search">
+
+            <select id="category">
+                <option value="ao">Áo</option>
+                <option value="quan">Quần</option>
+                <option value="vong">Vòng</option>
+                <option value="mu">Mũ</option>
+            </select>
+
+            <div class="search1">
+                <input type="text" placeholder="What do you need?">
+
+                <button type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- Icon yêu thích và giỏ hàng -->
+        <div class="icon">
+
+            <a href="#" class="icon-item" aria-label="Yêu thích">
+                <i class="fa-regular fa-heart"></i>
+                <span>Yêu thích</span>
+            </a>
+
+            <a href="#" class="icon-item" aria-label="Giỏ hàng">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Giỏ hàng</span>
+            </a>
+
+            <!-- Icon đăng nhập -->
+            <a href="Login.html" class="icon-item" aria-label="Đăng nhập">
+                <i class="fa-regular fa-user"></i>
+                <span>Tài khoản</span>
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- ===== MENU ===== -->
+    <nav class="nav">
+
+        <div class="menu">
+
+            <div class="department">
+                <i class="fa-solid fa-bars"></i>
+
+                <select aria-label="Danh mục sản phẩm">
+                    <option value="">All departments</option>
+                    <option value="ao">Áo</option>
+                    <option value="quan">Quần</option>
+                    <option value="phukien">Phụ kiện</option>
+                </select>
+            </div>
+
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Product</a>
+            <a href="#">About me</a>
+            <a href="#">Contact</a>
+
+
+        </div>
+
+    </nav>
+
+
+    <!-- ===== CATEGORIES ===== -->
+    <section class="categories">
+
+        <h3>CATEGORIES</h3>
+
+        <div class="categories1">
+
+            <div class="categoy">
+                <img src="Myproject/image.png" alt="Men Clothes">
+                <p>Men Clothes</p>
+            </div>
+
+            <div class="categoy">
+                <img src="Myproject/image copy 19.png" alt="Watches">
+                <p>Watches</p>
+            </div>
+
+            <div class="categoy">
+                <img src="Myproject/image copy 6.png" alt="Men Shoes">
+                <p>Men Shoes</p>
+            </div>
+
+            <div class="categoy">
+                <img src="Myproject/image copy.png" alt="Women Clothes">
+                <p>Women Clothes</p>
+            </div>
+
+        </div>
+
+        <div class="categories2">
+
+            <div class="categoy">
+                <img src="Myproject/image copy 12.png" alt="Beauty">
+                <p>Beauty</p>
+            </div>
+
+            <div class="categoy">
+                <img src="Myproject/image copy 14.png" alt="Women Shoes">
+                <p>Women Shoes</p>
+            </div>
+
+            <div class="categoy">
+                <img src="Myproject/image copy 15.png" alt="Women Bags">
+                <p>Women Bags</p>
+            </div>
+
+            <div class="categoy">
+                <img src="Myproject/image copy 16.png" alt="Fashion Accessories">
+                <p>Fashion Accessories</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== BODY WEB: SĂN DEAL SIÊU HOT ===== -->
+    <section class="deal-section">
+
+        <!-- Banner bên trái -->
+        <div class="deal-banner">
+            <a href="#">
+                <img src="https://file.hstatic.net/200000503583/file/phoi-do-nam-cardina-37.jpg_ad88795a0c414f54ad5a3e5c0b2ef0cf.jpg" alt="Săn deal siêu hot">
+            </a>
+        </div>
+
+        <!-- Lưới 8 sản phẩm -->
+        <div class="deal-grid">
+
+            <!-- Sản phẩm 1 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://thoitrangbigsize.vn/wp-content/uploads/2025/05/Xanh-dam-5.jpg" alt="Sản phẩm 1">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YXtUockiAJr5vmGOjx8WYLPkMTEjOGRd7QN91LQOIQ&s=10" alt="Thương hiệu 1">
+                </div>
+                <p class="deal-text">Ưu đãi đến 50%</p>
+            </a>
+
+            <!-- Sản phẩm 2 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://bizweb.dktcdn.net/100/502/737/products/o1cn01llnkuh1zsbloahlez2217605-5ecdae97-4372-4038-ae8e-3604acc30c94.jpg?v=1750665629290" alt="Sản phẩm 2">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6hJcgSO__LLVIRQcgvnyJa6W72NVULRE3-aR7Pom6KA&s=10" alt="Thương hiệu 2">
+                </div>
+                <p class="deal-text">Mua 1 tặng 1</p>
+            </a>
+
+            <!-- Sản phẩm 3 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://thegioida.vn/wp-content/uploads/2025/03/den-16.jpg" alt="Sản phẩm 3">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9C_1V6buL9Fog36k_jltk7JG3ReF-V4bZLdoa-SgR2w&s=10" alt="Thương hiệu 3">
+                </div>
+                <p class="deal-text">Mua 1 được 2</p>
+            </a>
+
+            <!-- Sản phẩm 4 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://cdn.vuahanghieu.com/unsafe/0x900/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2023/12/dong-ho-rolex-steel-datejust-36mm-jubilee-bracelet-126234-0051-mau-xanh-bac-658e82a71b695-29122023152615.jpg" alt="Sản phẩm 4">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://suno.vn/blog/wp-content/uploads/2015/12/8_3.jpg" alt="Thương hiệu 4">
+                </div>
+                <p class="deal-text">Mua 1 tặng 1</p>
+            </a>
+
+            <!-- Sản phẩm 5 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://lareboss.com.vn/upload/san-pham/pc23-02a/untitled-design-1920x.png" alt="Sản phẩm 5">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoRPT0a93h5tkHRw_zySx0QCsCAEgoG-j6azDK-h7TIUdDmhy-8ifh_-2G&s=10" alt="Thương hiệu 5">
+                </div>
+                <p class="deal-text">Mua 1 tặng 1</p>
+            </a>
+
+            <!-- Sản phẩm 6 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://bizweb.dktcdn.net/100/441/456/products/2-1743065112741.jpg?v=1743065116023" alt="Sản phẩm 6">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://icolor.vn/wp-content/uploads/2021/03/logo-thuong-hieu-thoi-trang-7-min.jpg" alt="Thương hiệu 6">
+                </div>
+                <p class="deal-text">Mua 1 tặng 1</p>
+            </a>
+
+            <!-- Sản phẩm 7 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6sWQDnb-13XoHeJOIXoQUK4MdZtBgKI5Zog2l3yhjyA&s=10" alt="Sản phẩm 7">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://file.hstatic.net/200000503583/file/logo-cac-thuong-hieu-thoi-trang-noi-tieng-15_e8ad2022abc647a5a2c6bcd7bf678b1d.jpg" alt="Thương hiệu 7">
+                </div>
+                <p class="deal-text">MUA LÀ CÓ QUÀ</p>
+            </a>
+
+            <!-- Sản phẩm 8 -->
+            <a href="#" class="deal-item">
+                <div class="deal-product">
+                    <img src="https://cavat.com/wp-content/uploads/2017/01/cavat-den-8cm.jpg" alt="Sản phẩm 8">
+                </div>
+                <div class="deal-brand">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxY2afUzSCLM8tT64TIEl0qeIPMcpwtkjeobw8QC2b4Q&s=10" alt="Thương hiệu 8">
+                </div>
+                <p class="deal-text">Mua 1 được 6</p>
+            </a>
+
+        </div>
+
+        <!-- Nút mũi tên bên phải -->
+        <button class="deal-next" type="button" aria-label="Xem tiếp">
+            <span></span>
+        </button>
+
+    </section>
+    <!-- ===== KẾT THÚC BODY WEB ===== -->
+
+
+    <!-- ===== PRODUCT ===== -->
+    <section class="Product">
+
+        <div class="ListProduc">
+            <h3>Product</h3>
+            <a href="#">See all &gt;</a>
+        </div>
+
+        <!-- Hàng sản phẩm thứ nhất -->
+        <div class="listproduct1">
+
+            <div class="products">
+                <img src="Myproject/image copy 20.png" alt="Product 1">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+            <div class="products">
+                <img src="Myproject/image copy 21.png" alt="Product 2">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+            <div class="products">
+                <img src="Myproject/image copy 22.png" alt="Product 3">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+            <div class="products">
+                <img src="Myproject/image copy 23.png" alt="Product 4">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+        </div>
+
+
+        <!-- Hàng sản phẩm thứ hai -->
+        <div class="listproduct2">
+
+            <div class="products">
+                <img src="Myproject/image copy 24.png" alt="Product 5">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+            <div class="products">
+                <img src="Myproject/image copy 25.png" alt="Product 6">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+            <div class="products">
+                <img src="Myproject/image copy 26.png" alt="Product 7">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+            <div class="products">
+                <img src="Myproject/image copy 27.png" alt="Product 8">
+                <p class="See-all">See All</p>
+                <div class="Evaluate">Đánh giá</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div class="footer-col">
+                <h2 class="logo">M&amp;M</h2>
+                <p>Address:...</p>
+                <p>Phone:...</p>
+                <p>Email:...</p>
+
+                <div class="socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Information</h4>
+                <u>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Services</a></li>
+                </u>
+            </div>
+
+            <div class="footer-col">
+                <h4>My Account</h4>
+                <ul>
+                    <li><a href="#">My Acount</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Shopping Cart</a></li>
+                    <li><a href="#">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Join Our Newletter Now</h4>
+                <p>Get e-mail updates about our latest shop and specail offers.</p>
+
+                <form class="newletter">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>Copyright © Mix 2026 &amp; Match. All rights reserved.</p>
+
+            <div class="payments">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

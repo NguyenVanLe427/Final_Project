@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chi tiết sản phẩm - M&M Shop</title>
+
+    <link rel="stylesheet" href="M&M_Shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="DetailProduct.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <h1>M&M</h1>
+            <p>FASHION STORE</p>
+        </div>
+
+        <div class="search">
+            <select id="category">
+                <option value="ao">Áo</option>
+                <option value="quan">Quần</option>
+                <option value="vong">Vòng</option>
+                <option value="mu">Mũ</option>
+            </select>
+
+            <div class="search1">
+                <input type="text" placeholder="What do you need?">
+
+                <button type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <div class="icon">
+            <a href="#" class="icon-item" aria-label="Yêu thích">
+                <i class="fa-regular fa-heart"></i>
+                <span>Yêu thích</span>
+            </a>
+
+            <a href="GioHang.html" class="icon-item" aria-label="Giỏ hàng">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Giỏ hàng</span>
+                <p id="cart-count">0</p>
+            </a>
+
+            <a href="Login.html" class="icon-item" aria-label="Tài khoản">
+                <i class="fa-regular fa-user"></i>
+                <span>Tài khoản</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- MENU -->
+    <nav class="nav">
+        <div class="menu">
+            <div class="department">
+                <i class="fa-solid fa-bars"></i>
+
+                <select aria-label="Danh mục sản phẩm">
+                    <option value="">All departments</option>
+                    <option value="ao">Áo</option>
+                    <option value="quan">Quần</option>
+                    <option value="phukien">Phụ kiện</option>
+                </select>
+            </div>
+
+            <a href="M&M_Shop.html">Home</a>
+            <a href="M&M_Shop.html">Shop</a>
+            <a href="M&M_Shop.html">Product</a>
+            <a href="#">About me</a>
+            <a href="#">Contact</a>
+            <a href="#">Phone</a>
+            <a href="#">Address</a>
+        </div>
+    </nav>
+
+    <!-- CHI TIẾT DANH MỤC -->
+    <main class="detail-container">
+
+        <a href="M&M_Shop.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Tiếp tục mua sắm
+        </a>
+
+        <div class="detail-content">
+
+            <div class="detail-image">
+                <img id="product-image" src="" alt="Sản phẩm">
+            </div>
+
+            <div class="detail-info">
+
+                <p class="detail-tag">M&M COLLECTION</p>
+
+                <h1 id="product-name">Tên danh mục</h1>
+
+                <p class="detail-rating">
+                    ★★★★★
+                    <span>(Đánh giá sản phẩm)</span>
+                </p>
+
+                <h2 id="product-price">1200000 ₫</h2>
+
+                <p class="detail-description">
+                    Sản phẩm thời trang với thiết kế hiện đại,
+                    phù hợp sử dụng hằng ngày và dễ dàng kết hợp
+                    với nhiều phong cách khác nhau.
+                </p>
+
+                <p class="stock">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Còn hàng
+                </p>
+
+                <div class="quantity-box">
+                    <span>Số lượng:</span>
+
+                    <div class="quantity">
+                        <button type="button" id="decrease">−</button>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            max="99"
+                        >
+
+                        <button type="button" id="increase">+</button>
+                    </div>
+                </div>
+
+                <button type="button" id="add-cart" class="add-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Thêm vào giỏ hàng
+                </button>
+
+                <p id="message"></p>
+
+                <div class="detail-benefits">
+                    <p>
+                        <i class="fa-solid fa-truck"></i>
+                        Giao hàng tận nơi
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-rotate-left"></i>
+                        Hỗ trợ đổi trả
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Mua sắm an tâm
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="DetailProduct.js"></script>
+</body>
+
+</html>

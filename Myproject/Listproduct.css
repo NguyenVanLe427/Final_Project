@@ -1,0 +1,98 @@
+/* ===== CATEGORIES ===== */
+
+.categories {
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.categories h3 {
+    font-size: 20px;
+    color: #666;
+    padding: 20px 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.categories1,
+.categories2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.categoy {
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 15px;
+}
+
+.categoy img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.categoy p {
+    margin: 5px 0;
+    font-style: italic;
+}
+
+
+/* ===== PRODUCT ===== */
+
+.Product {
+    background-color: white;
+    padding: 15px 10px;
+}
+
+.ListProduc {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.ListProduc h3 {
+    color: #ff4d35;
+    font-size: 27px;
+    font-style: italic;
+}
+
+.ListProduc a {
+    margin-left: auto;
+    color: #ff4d35;
+    font-size: 20px;
+}
+
+.listproduct1,
+.listproduct2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.listproduct {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.products {
+    min-width: 0;
+    text-align: center;
+    background-color: white;
+}
+
+.products img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+}
+
+.products .Evaluate {
+    background-color: #ffb6a3;
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 3px;
+    margin: 0 5px;
+}
