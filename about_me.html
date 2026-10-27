@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About me | M&M Shop</title>
+
+    <!-- CSS có sẵn của dự án (dùng lại header, menu, footer) -->
+    <link rel="stylesheet" href="M&M_Shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="Final_Footer/footer.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <!-- CSS riêng cho trang About me (chỉ phần nội dung mới) -->
+    <link rel="stylesheet" href="About_me.css">
+</head>
+
+<body>
+
+    <!-- ===== HEADER (giữ nguyên từ trang chủ) ===== -->
+    <header class="header">
+
+        <div class="logo">
+            <h1>M&M</h1>
+            <p>FASHION STORE</p>
+        </div>
+
+        <div class="search">
+            <select id="category">
+                <option value="ao">Áo</option>
+                <option value="quan">Quần</option>
+                <option value="vong">Vòng</option>
+                <option value="mu">Mũ</option>
+            </select>
+
+            <div class="search1">
+                <input type="text" placeholder="What do you need?">
+                <button type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <div class="icon">
+            <a href="#" class="icon-item" aria-label="Yêu thích">
+                <i class="fa-regular fa-heart"></i>
+                <span>Yêu thích</span>
+            </a>
+            <a href="#" class="icon-item" aria-label="Giỏ hàng">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Giỏ hàng</span>
+            </a>
+            <a href="Login.html" class="icon-item" aria-label="Đăng nhập">
+                <i class="fa-regular fa-user"></i>
+                <span>Tài khoản</span>
+            </a>
+        </div>
+    </header>
+
+
+    <!-- ===== MENU (đã nối link sang trang chủ và About me) ===== -->
+    <nav class="nav">
+        <div class="menu">
+
+            <div class="department">
+                <i class="fa-solid fa-bars"></i>
+                <select aria-label="Danh mục sản phẩm">
+                    <option value="">All departments</option>
+                    <option value="ao">Áo</option>
+                    <option value="quan">Quần</option>
+                    <option value="phukien">Phụ kiện</option>
+                </select>
+            </div>
+
+            <a href="M&M_Shop.html">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Product</a>
+            <a href="About_me.html" class="active">About me</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact">Phone</a>
+            <a href="#contact">Address</a>
+
+        </div>
+    </nav>
+
+
+    <!-- ===== NỘI DUNG ABOUT ME ===== -->
+    <main class="about">
+
+        <!-- Tiêu đề trang -->
+        <div class="ab-title">
+            <h3>ABOUT ME</h3>
+            <p><a href="M&M_Shop.html">Home</a> / About me</p>
+        </div>
+
+        <!-- Câu chuyện thương hiệu -->
+        <section class="ab-story">
+            <div class="ab-story-img">
+                <span>M&M</span>
+                <p>Mix &amp; Match your style.</p>
+            </div>
+
+            <div class="ab-story-text">
+                <h2>M&amp;M Fashion Store – nơi phong cách bắt đầu</h2>
+                <p>M&amp;M là cửa hàng thời trang do nhóm sinh viên chúng mình xây dựng, với ý tưởng đơn giản:
+                    thời trang đẹp phải dễ tìm và dễ mua. Từ quần áo nam nữ, giày dép, đồng hồ, túi xách đến
+                    mỹ phẩm và phụ kiện, tất cả đều có ở một nơi.</p>
+                <p>Cái tên M&amp;M là viết tắt của <b>Mix &amp; Match</b>: mỗi món đồ đều được chọn để dễ phối
+                    với phần còn lại của tủ đồ, giúp bạn tự tin thể hiện phong cách riêng.</p>
+            </div>
+        </section>
+
+        <!-- Con số -->
+        <section class="ab-numbers">
+            <div><strong>8</strong><span>Danh mục sản phẩm</span></div>
+            <div><strong>500+</strong><span>Sản phẩm</span></div>
+            <div><strong>1.000+</strong><span>Khách hàng</span></div>
+            <div><strong>24/7</strong><span>Hỗ trợ</span></div>
+        </section>
+
+        <!-- Cam kết -->
+        <section class="ab-box">
+            <h3>Cam kết của M&amp;M</h3>
+            <div class="ab-values">
+                <div>
+                    <i class="fa-solid fa-gem"></i>
+                    <h4>Chất lượng</h4>
+                    <p>Kiểm tra chất liệu và đường may trước khi giao.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-tags"></i>
+                    <h4>Giá hợp lý</h4>
+                    <p>Ưu đãi thường xuyên, giá phù hợp với sinh viên.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h4>Giao nhanh</h4>
+                    <p>Đóng gói nhanh, giao tận nơi trên toàn quốc.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <h4>Đổi trả dễ</h4>
+                    <p>Không vừa size, không hợp phong cách? Đổi trả dễ dàng.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thành viên nhóm -->
+        <section class="ab-box">
+            <h3>Thành viên Nhóm 10</h3>
+            <div class="ab-team">
+                <div class="ab-member">
+                    <div class="ab-avatar">L</div>
+                    <h4>Nguyen Van Le</h4>
+                    <p>Nhóm trưởng</p>
+                </div>
+                <div class="ab-member">
+                    <div class="ab-avatar">N</div>
+                    <h4>Nguyen Thi Bich Nguyen</h4>
+                    <p>Thanh Vien</p>
+                </div>
+                <div class="ab-member">
+                    <div class="ab-avatar">Q</div>
+                    <h4>Ho Van Quan</h4>
+                    <p>Thanh Vien</p>
+                </div>
+                <div class="ab-member">
+                    <div class="ab-avatar">P</div>
+                    <h4>Nguyen Thanh Phuong</h4>
+                    <p>Thanh Vien</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Liên hệ -->
+        <section class="ab-box" id="contact">
+            <h3>Liên hệ</h3>
+            <div class="ab-contact">
+                <div><i class="fa-solid fa-phone"></i><span><b>Phone</b> 0999 999 919</span></div>
+                <div><i class="fa-regular fa-envelope"></i><span><b>Email</b> mix&match99@gmail.com</span></div>
+                <div><i class="fa-solid fa-location-dot"></i><span><b>Address</b> Đà Nẵng, Việt Nam</span></div>
+            </div>
+            <a class="ab-btn" href="M&M_Shop.html">Mua sắm ngay</a>
+        </section>
+
+    </main>
+
+
+    <!-- ===== FOOTER (giữ nguyên từ trang chủ) ===== -->
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div class="footer-col">
+                <h2 class="logo">M&amp;M</h2>
+                <p>Address: Đà Nẵng, Việt Nam</p>
+                <p>Phone: 0999 999 919</p>
+                <p>Email: mixmatch99@gmail.com</p> 
+
+                <div class="socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="About_me.html">About Us</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>My Account</h4>
+                <ul>
+                    <li><a href="Login.html">My Acount</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Shopping Cart</a></li>
+                    <li><a href="#">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Join Our Newletter Now</h4>
+                <p>Get e-mail updates about our latest shop and specail offers.</p>
+
+                <form class="newletter">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © Mix 2026 &amp; Match. All rights reserved.</p>
+
+            <div class="payments">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-cc-amex"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

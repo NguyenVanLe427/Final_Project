@@ -1,0 +1,213 @@
+/* ===== ABOUT ME – chỉ style cho phần nội dung mới =====
+   Header, menu, footer dùng lại CSS có sẵn của dự án.
+   Tất cả class đều bắt đầu bằng "ab-" để không đè lên CSS cũ. */
+
+.about{
+    background:#f4f4f4;
+    padding-bottom:10px;
+}
+
+/* Tô đỏ mục menu đang đứng */
+.nav .menu a.active{
+    background:#9b1a30;
+}
+
+/* ----- Tiêu đề trang ----- */
+.ab-title{
+    background:#fff;
+    padding:16px 20px;
+    border-bottom:1px solid #e8e8e8;
+    font-size:13px;
+    color:#8a8a8a;
+}
+.ab-title h3{
+    font-style:italic;
+    font-size:20px;
+    color:#555;
+    margin-bottom:2px;
+}
+.ab-title a:hover{color:#9b1a30}
+
+/* ----- Câu chuyện ----- */
+.ab-story{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    background:#fff;
+    margin-top:10px;
+}
+.ab-story-img{
+    min-height:400px;
+    background:linear-gradient(160deg,#9b1a30,#141414);
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+.ab-story-img span{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    font-size:clamp(100px,15vw,200px);
+    color:rgba(255,255,255,.12);
+    line-height:1;
+}
+.ab-story-img p{
+    position:absolute;
+    left:26px;
+    bottom:24px;
+    color:#fff;
+    font-family:Georgia,serif;
+    font-style:italic;
+    font-size:22px;
+}
+.ab-story-text{padding:44px 46px}
+.ab-story-text h2{
+    font-size:28px;
+    color:#141414;
+    line-height:1.3;
+    margin-bottom:16px;
+}
+.ab-story-text p{
+    color:#4a4a4a;
+    line-height:1.7;
+    margin-bottom:14px;
+    max-width:62ch;
+}
+
+/* ----- Con số ----- */
+.ab-numbers{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:#9b1a30;
+    color:#fff;
+    margin-top:10px;
+}
+.ab-numbers div{
+    padding:24px 10px;
+    text-align:center;
+    border-left:1px solid rgba(255,255,255,.2);
+}
+.ab-numbers div:first-child{border-left:0}
+.ab-numbers strong{
+    display:block;
+    font-family:Georgia,serif;
+    font-size:32px;
+}
+.ab-numbers span{font-size:13px}
+
+/* ----- Khối chung (cam kết, thành viên, liên hệ) ----- */
+.ab-box{
+    background:#fff;
+    margin-top:10px;
+    padding:30px;
+}
+.ab-box > h3{
+    font-size:22px;
+    color:#141414;
+    margin-bottom:20px;
+}
+
+/* Cam kết */
+.ab-values{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border:1px solid #e8e8e8;
+}
+.ab-values div{
+    padding:24px 20px;
+    border-left:1px solid #e8e8e8;
+}
+.ab-values div:first-child{border-left:0}
+.ab-values i{
+    color:#9b1a30;
+    font-size:26px;
+    margin-bottom:12px;
+}
+.ab-values h4{
+    color:#141414;
+    margin-bottom:6px;
+}
+.ab-values p{
+    font-size:14px;
+    color:#4a4a4a;
+}
+
+/* Thành viên */
+.ab-team{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+.ab-member{
+    border:1px solid #e8e8e8;
+    text-align:center;
+    padding-bottom:18px;
+}
+.ab-avatar{
+    aspect-ratio:1/1;
+    background:#ececec;
+    color:#9b1a30;
+    font-family:Georgia,serif;
+    font-size:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:14px;
+}
+.ab-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.ab-member h4{color:#141414}
+.ab-member p{
+    color:#9b1a30;
+    font-size:13px;
+}
+
+/* Liên hệ */
+.ab-contact{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid #e8e8e8;
+}
+.ab-contact div{
+    display:flex;
+    gap:14px;
+    padding:20px;
+    border-left:1px solid #e8e8e8;
+}
+.ab-contact div:first-child{border-left:0}
+.ab-contact i{
+    color:#9b1a30;
+    font-size:20px;
+    margin-top:3px;
+}
+.ab-contact b{
+    display:block;
+    color:#141414;
+}
+.ab-btn{
+    display:inline-block;
+    margin-top:22px;
+    padding:12px 28px;
+    background:#9b1a30;
+    color:#fff;
+    text-decoration:none;
+}
+.ab-btn:hover{background:#7a1425}
+
+/* ----- Màn hình nhỏ ----- */
+@media (max-width:960px){
+    .ab-story{grid-template-columns:1fr}
+    .ab-story-img{min-height:260px}
+    .ab-numbers,.ab-values,.ab-team{grid-template-columns:repeat(2,1fr)}
+    .ab-contact{grid-template-columns:1fr}
+    .ab-contact div{border-left:0;border-top:1px solid #e8e8e8}
+    .ab-contact div:first-child{border-top:0}
+}
+@media (max-width:540px){
+    .ab-story-text{padding:28px 20px}
+    .ab-box{padding:22px 16px}
+    .ab-values,.ab-team{grid-template-columns:1fr}
+}
