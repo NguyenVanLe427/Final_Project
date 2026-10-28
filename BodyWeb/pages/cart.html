@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng | M&amp;M Shop</title>
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+<body data-root-prefix="../">
+    <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="M&M Shop - Trang chủ">
+            <span class="brand-name">M&amp;M</span><span class="brand-caption">FASHION STORE</span>
+        </a>
+        <form class="search-form" data-search-form role="search">
+            <label class="sr-only" for="site-search">Tìm sản phẩm</label>
+            <input id="site-search" name="q" type="search" placeholder="Bạn đang tìm gì?" data-search-input>
+            <button type="submit">Tìm kiếm</button>
+        </form>
+        <div class="header-links">
+            <a href="cart.html" aria-current="page">Giỏ hàng <span class="cart-count" data-cart-count>0</span></a>
+            <a href="login.html">Tài khoản</a>
+        </div>
+    </header>
+    <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="../index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="try-on.html">Thử đồ ảo</a>
+        <a href="cart.html" aria-current="page">Giỏ hàng</a>
+    </nav>
+    <main class="content-section page-content">
+        <div class="section-heading">
+            <div><p class="eyebrow">ĐƠN HÀNG CỦA BẠN</p><h1>Giỏ hàng</h1></div>
+        </div>
+        <p class="form-message" data-cart-message role="status" aria-live="polite"></p>
+        <div class="cart-layout">
+            <div class="cart-items" data-cart-items></div>
+            <aside class="cart-summary">
+                <h2>Tóm tắt đơn hàng</h2>
+                <p><span>Tạm tính</span><strong data-cart-subtotal>0&nbsp;₫</strong></p>
+                <p><span>Phí vận chuyển</span><strong>Miễn phí</strong></p>
+                <p class="cart-total"><span>Tổng cộng</span><strong data-cart-total>0&nbsp;₫</strong></p>
+                <button class="button button-primary button-full" type="button" data-checkout>Tiến hành đặt hàng</button>
+                <a class="text-link" href="products.html">Tiếp tục mua sắm</a>
+            </aside>
+        </div>
+        <p class="empty-state" data-cart-empty hidden>Giỏ hàng đang trống. Hãy khám phá các sản phẩm của M&amp;M Shop.</p>
+    </main>
+    <footer class="site-footer">
+        <a class="brand brand-footer" href="../index.html"><span class="brand-name">M&amp;M</span><span class="brand-caption">FASHION STORE</span></a>
+        <p>&copy; 2026 M&amp;M Shop</p>
+    </footer>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+</body>
+</html>

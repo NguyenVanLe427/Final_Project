@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm | M&amp;M Shop</title>
+    <link rel="stylesheet" href="../css/product-detail.css">
+</head>
+<body data-root-prefix="../">
+    <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="M&M Shop - Trang chủ">
+            <span class="brand-name">M&amp;M</span><span class="brand-caption">FASHION STORE</span>
+        </a>
+        <form class="search-form" data-search-form role="search">
+            <label class="sr-only" for="site-search">Tìm sản phẩm</label>
+            <input id="site-search" name="q" type="search" placeholder="Bạn đang tìm gì?" data-search-input>
+            <button type="submit">Tìm kiếm</button>
+        </form>
+        <div class="header-links">
+            <a href="cart.html">Giỏ hàng <span class="cart-count" data-cart-count>0</span></a>
+            <a href="login.html">Tài khoản</a>
+        </div>
+    </header>
+    <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="../index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="try-on.html">Thử đồ ảo</a>
+        <a href="cart.html">Giỏ hàng</a>
+    </nav>
+    <main class="content-section page-content">
+        <a class="text-link back-link" href="products.html">&larr; Quay lại danh sách</a>
+        <section class="detail-layout" data-product-detail>
+            <div class="detail-image"><img data-detail-image src="" alt=""></div>
+            <div class="detail-copy">
+                <p class="eyebrow">M&amp;M COLLECTION</p>
+                <h1 data-detail-name>Sản phẩm</h1>
+                <p class="detail-price" data-detail-price></p>
+                <p class="detail-description" data-detail-description></p>
+                <label class="quantity-label" for="detail-quantity">Số lượng</label>
+                <div class="quantity-control">
+                    <button type="button" data-quantity-step="-1" aria-label="Giảm số lượng">-</button>
+                    <input id="detail-quantity" type="number" min="1" max="99" value="1" data-quantity>
+                    <button type="button" data-quantity-step="1" aria-label="Tăng số lượng">+</button>
+                </div>
+                <button class="button button-primary" type="button" data-add-product>Thêm vào giỏ hàng</button>
+                <p class="form-message" data-detail-message role="status" aria-live="polite"></p>
+            </div>
+        </section>
+        <section class="related-section">
+            <div class="section-heading"><h2>Sản phẩm khác</h2></div>
+            <div class="product-grid" id="related-products"></div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <a class="brand brand-footer" href="../index.html"><span class="brand-name">M&amp;M</span><span class="brand-caption">FASHION STORE</span></a>
+        <p>&copy; 2026 M&amp;M Shop</p>
+    </footer>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/products.js" defer></script>
+</body>
+</html>

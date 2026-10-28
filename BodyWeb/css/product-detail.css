@@ -1,0 +1,20 @@
+@import url("style.css");
+
+.detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 48px; align-items: center; margin-top: 20px; padding: 28px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.back-link { display: inline-block; margin-bottom: 10px; }
+.detail-image { display: grid; min-height: 380px; place-items: center; padding: 20px; background: #faf8f7; }
+.detail-image img { width: 100%; height: 380px; object-fit: contain; }
+.detail-copy h1 { margin: 6px 0 8px; font-family: Georgia, serif; font-size: 32px; }
+.detail-description { max-width: 560px; color: var(--muted); }
+.quantity-label { display: block; margin: 18px 0 7px; font-size: 14px; font-weight: 700; }
+.quantity-control { display: flex; width: max-content; margin-bottom: 18px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.quantity-control button { width: 40px; border: 0; background: #f2efed; }
+.quantity-control input { width: 56px; padding: 8px 4px; border: 0; text-align: center; }
+.detail-copy > .button { min-width: 220px; }
+.related-section { margin-top: 42px; }
+
+@media (max-width: 640px) {
+    .detail-layout { grid-template-columns: 1fr; gap: 18px; padding: 16px; }
+    .detail-image, .detail-image img { min-height: 260px; height: 260px; }
+    .detail-copy h1 { font-size: 27px; }
+}

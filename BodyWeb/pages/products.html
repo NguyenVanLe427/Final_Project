@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm | M&amp;M Shop</title>
+    <link rel="stylesheet" href="../css/products.css">
+</head>
+<body data-root-prefix="../">
+    <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="M&M Shop - Trang chủ">
+            <span class="brand-name">M&amp;M</span>
+            <span class="brand-caption">FASHION STORE</span>
+        </a>
+        <form class="search-form" data-search-form role="search">
+            <label class="sr-only" for="site-search">Tìm sản phẩm</label>
+            <input id="site-search" name="q" type="search" placeholder="Bạn đang tìm gì?" data-search-input>
+            <button type="submit">Tìm kiếm</button>
+        </form>
+        <div class="header-links">
+            <a href="cart.html">Giỏ hàng <span class="cart-count" data-cart-count>0</span></a>
+            <a href="login.html">Tài khoản</a>
+        </div>
+    </header>
+    <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="../index.html">Trang chủ</a>
+        <a href="products.html" aria-current="page">Sản phẩm</a>
+        <a href="try-on.html">Thử đồ ảo</a>
+        <a href="cart.html">Giỏ hàng</a>
+    </nav>
+    <main class="content-section page-content">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">BỘ SƯU TẬP M&amp;M</p>
+                <h1>Sản phẩm</h1>
+            </div>
+            <label class="filter-label" for="category-filter">Danh mục</label>
+            <select id="category-filter" class="select-control" data-category-filter>
+                <option value="">Tất cả danh mục</option>
+            </select>
+        </div>
+        <p class="result-summary" data-product-summary></p>
+        <div class="product-grid" id="product-list"></div>
+        <p class="empty-state" data-products-empty hidden>Không tìm thấy sản phẩm phù hợp.</p>
+    </main>
+    <footer class="site-footer">
+        <a class="brand brand-footer" href="../index.html"><span class="brand-name">M&amp;M</span><span class="brand-caption">FASHION STORE</span></a>
+        <p>&copy; 2026 M&amp;M Shop</p>
+    </footer>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/products.js" defer></script>
+</body>
+</html>

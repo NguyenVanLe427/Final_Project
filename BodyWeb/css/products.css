@@ -1,0 +1,9 @@
+@import url("style.css");
+
+.filter-label { margin-left: auto; font-size: 14px; font-weight: 700; }
+.select-control { min-width: 190px; }
+
+@media (max-width: 640px) {
+    .filter-label { margin-left: 0; }
+    .select-control { min-width: 100%; }
+}

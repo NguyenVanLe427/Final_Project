@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M&M Shop - thời trang và phụ kiện">
+    <title>M&amp;M Shop | Trang chủ</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body data-root-prefix="">
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="M&M Shop - Trang chủ">
+            <span class="brand-name">M&amp;M</span>
+            <span class="brand-caption">FASHION STORE</span>
+        </a>
+        <form class="search-form" data-search-form role="search">
+            <label class="sr-only" for="site-search">Tìm sản phẩm</label>
+            <input id="site-search" name="q" type="search" placeholder="Bạn đang tìm gì?" data-search-input>
+            <button type="submit">Tìm kiếm</button>
+        </form>
+        <div class="header-links">
+            <a href="pages/cart.html">Giỏ hàng <span class="cart-count" data-cart-count>0</span></a>
+            <a href="pages/login.html">Tài khoản</a>
+        </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="index.html" aria-current="page">Trang chủ</a>
+        <a href="pages/products.html">Sản phẩm</a>
+        <a href="pages/try-on.html">Thử đồ ảo</a>
+        <a href="pages/cart.html">Giỏ hàng</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">M&amp;M COLLECTION</p>
+                <h1>Phong cách của bạn,<br>lựa chọn của bạn.</h1>
+                <p>Khám phá bộ sưu tập thời trang và phụ kiện dành cho mọi ngày.</p>
+                <a class="button button-light" href="pages/products.html">Khám phá sản phẩm</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/products/product-01.png" alt="Bộ sưu tập thời trang M&M">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MUA SẮM THEO DANH MỤC</p>
+                    <h2>Danh mục nổi bật</h2>
+                </div>
+                <a class="text-link" href="pages/products.html">Xem tất cả sản phẩm</a>
+            </div>
+            <div class="category-grid" data-category-list></div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">GỢI Ý DÀNH CHO BẠN</p>
+                    <h2>Sản phẩm nổi bật</h2>
+                </div>
+                <a class="text-link" href="pages/products.html">Xem tất cả</a>
+            </div>
+            <div class="product-grid" id="featured-products"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand brand-footer" href="index.html">
+            <span class="brand-name">M&amp;M</span>
+            <span class="brand-caption">FASHION STORE</span>
+        </a>
+        <p>Thời trang và phụ kiện cho phong cách riêng của bạn.</p>
+        <p>&copy; 2026 M&amp;M Shop</p>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="js/products.js" defer></script>
+</body>
+</html>
