@@ -2,6 +2,16 @@
 (function () {
     "use strict";
 
+    if (sessionStorage.getItem("mm_admin_authenticated") !== "true") {
+        window.location.replace("login.html");
+        return;
+    }
+
+    document.getElementById("admin-logout").addEventListener("click", function () {
+        sessionStorage.removeItem("mm_admin_authenticated");
+        window.location.replace("login.html");
+    });
+
     // Khóa lưu dữ liệu trong LocalStorage
     const PRODUCT_KEY = "mm_products";
     const CATEGORY_KEY = "mm_categories";

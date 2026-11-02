@@ -113,6 +113,26 @@ select {
     font-size: 13px;
 }
 
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logout-button {
+    padding: 9px 13px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: white;
+    color: var(--brand);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background: #f7e9eb;
+}
+
 /* THỐNG KÊ */
 .statistics {
     display: grid;
@@ -426,4 +446,3 @@ td {
         padding: 15px 10px;
     }
 }
-
