@@ -1,0 +1,429 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --brand: #7d2632;
+    --brand-dark: #5c1721;
+    --text: #292326;
+    --muted: #81777a;
+    --line: #eee6e7;
+    --background: #f7f4f4;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+/* BỐ CỤC CHÍNH */
+.admin-container {
+    display: grid;
+    grid-template-columns: 245px 1fr;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 28px 18px;
+    background: white;
+    border-right: 1px solid var(--line);
+}
+
+.logo {
+    color: var(--brand);
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+.logo span {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.sidebar nav {
+    margin-top: 45px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 14px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #62585b;
+    font-size: 14px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #f7e9eb;
+    color: var(--brand);
+    font-weight: bold;
+}
+
+.sidebar-bottom {
+    position: absolute;
+    bottom: 25px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* NỘI DUNG */
+.main-content {
+    padding: 35px 40px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.breadcrumb {
+    color: #a18e92;
+    font-size: 11px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.topbar h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.store-link {
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* THỐNG KÊ */
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.stat-card h2 {
+    margin-top: 10px;
+    color: var(--brand);
+    font-size: 28px;
+}
+
+/* KHUNG DANH SÁCH */
+.content-box {
+    padding: 25px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.btn-add,
+.btn-save {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background: var(--brand);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-add:hover,
+.btn-save:hover {
+    background: var(--brand-dark);
+}
+
+/* TÌM KIẾM */
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.toolbar input,
+.toolbar select {
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    outline: none;
+}
+
+.toolbar input {
+    width: 320px;
+}
+
+.toolbar select {
+    min-width: 190px;
+}
+
+/* BẢNG SẢN PHẨM */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    padding: 14px 12px;
+    background: #faf7f7;
+    color: #887d80;
+    font-size: 12px;
+}
+
+td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+}
+
+.product-info img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+}
+
+.product-info strong {
+    display: block;
+}
+
+.product-id {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 7px 11px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+}
+
+.btn-edit:hover {
+    color: var(--brand);
+}
+
+.btn-delete:hover {
+    color: #c62828;
+}
+
+.empty-message {
+    padding: 25px;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* FORM THÊM / SỬA */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, .5);
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 10px;
+    background: white;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header button {
+    border: none;
+    background: none;
+    color: var(--brand);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#product-form label {
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#product-form input,
+#product-form select {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+}
+
+.image-note {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-cancel {
+    padding: 11px 17px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+}
+
+#form-message {
+    color: var(--brand);
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .admin-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sidebar nav {
+        display: flex;
+        gap: 5px;
+        margin: 0;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .main-content {
+        padding: 25px 18px;
+    }
+}
+
+@media (max-width: 560px) {
+    .topbar {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .topbar h1 {
+        font-size: 25px;
+    }
+
+    .statistics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .toolbar {
+        flex-direction: column;
+    }
+
+    .toolbar input,
+    .toolbar select {
+        width: 100%;
+    }
+
+    .content-box {
+        padding: 15px 10px;
+    }
+}
+

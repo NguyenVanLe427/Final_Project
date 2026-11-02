@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    const categories = [
+    const defaultCategories = [
         { name: "Thời trang nam", image: "category-men-clothes.png" },
         { name: "Đồng hồ", image: "category-watches.png" },
         { name: "Giày nam", image: "category-men-shoes.png" },
@@ -12,7 +12,7 @@
         { name: "Phụ kiện", image: "category-accessories.png" }
     ];
 
-    const products = [
+    const defaultProducts = [
         { id: "1", name: "Áo thời trang nam", category: "Thời trang nam", image: "product-01.png", price: 399000, slot: "Áo" },
         { id: "2", name: "Đồng hồ thanh lịch", category: "Đồng hồ", image: "product-02.png", price: 890000, slot: "Phụ kiện" },
         { id: "3", name: "Giày thể thao nam", category: "Giày nam", image: "product-03.png", price: 650000, slot: "Giày" },
@@ -22,6 +22,26 @@
         { id: "7", name: "Túi xách thời trang", category: "Túi xách", image: "product-07.png", price: 720000, slot: "Phụ kiện" },
         { id: "8", name: "Phụ kiện thời trang", category: "Phụ kiện", image: "product-08.png", price: 199000, slot: "Phụ kiện" }
     ];
+
+    function readCatalog(key, defaultData) {
+    const savedData = localStorage.getItem(key);
+
+    if (savedData) {
+        return JSON.parse(savedData);
+    }
+
+    return defaultData;
+    }
+
+    // Lấy dữ liệu danh mục và sản phẩm
+    const categories = readCatalog("mm_categories", defaultCategories);
+    const products = readCatalog("mm_products", defaultProducts);
+
+    // Cho các trang khác sử dụng dữ liệu
+    window.ProductCatalog = {
+        products,
+        categories
+    };
 
     function escapeHtml(value) {
         return String(value).replace(/[&<>"']/g, (character) => ({
