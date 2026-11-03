@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 30px 15px;
+}
+
+.checkout-container {
+    max-width: 750px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin: 25px 0 15px;
+}
+
+#product-list {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+#total-price {
+    text-align: right;
+    margin-top: 15px;
+    color: #e63946;
+}
+
+form label {
+    display: block;
+    margin: 15px 0 7px;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bank-info {
+    display: none;
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    line-height: 1.8;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e63946;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 25px 0;
+    line-height: 2;
+}
+
+.success-message h2 {
+    color: green;
+}
+
+.success-message a {
+    color: #e63946;
+}
+
+@media (max-width: 600px) {
+    .checkout-container {
+        padding: 20px;
+    }
+    .product-item {
+        flex-direction: column;
+    }
+}

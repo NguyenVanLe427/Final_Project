@@ -1,4 +1,4 @@
-(function () {
+(function() {
     "use strict";
 
     const CART_KEY = "cart";
@@ -96,9 +96,9 @@
             const password = document.getElementById("register-password").value;
             const confirmation = document.getElementById("confirm-password").value;
             if (password.length < 6 || password !== confirmation) {
-                message.textContent = password.length < 6
-                    ? "Mật khẩu cần có ít nhất 6 ký tự."
-                    : "Mật khẩu xác nhận không khớp.";
+                message.textContent = password.length < 6 ?
+                    "Mật khẩu cần có ít nhất 6 ký tự." :
+                    "Mật khẩu xác nhận không khớp.";
                 return;
             }
 

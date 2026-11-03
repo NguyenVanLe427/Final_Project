@@ -78,7 +78,7 @@
         });
 
         document.querySelector("[data-checkout]").addEventListener("click", () => {
-            message.textContent = "Chức năng đặt hàng sẽ được kết nối khi có hệ thống thanh toán.";
+            window.location.href = "checkout.html";
         });
         render();
     }
