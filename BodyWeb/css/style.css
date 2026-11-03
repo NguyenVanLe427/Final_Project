@@ -116,7 +116,7 @@ main { max-width: 1440px; margin: 0 auto; }
     .brand-name { font-size: 32px; }
     .brand-caption { font-size: 8px; letter-spacing: 2px; }
     .header-links { gap: 10px; font-size: 12px; }
-    .site-nav { justify-content: space-around; gap: 8px; padding: 11px 8px; font-size: 13px; }
+    .site-nav { justify-content: space-around; flex-wrap: wrap; gap: 6px 12px; padding: 11px 8px; font-size: 12px; }
     .content-section { padding: 30px 14px; }
     .section-heading { align-items: start; flex-wrap: wrap; }
     .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
