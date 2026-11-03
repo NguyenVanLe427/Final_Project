@@ -1,4 +1,4 @@
-(function () {
+(function() {
     "use strict";
 
     const CART_KEY = "cart";
@@ -11,6 +11,9 @@
         "Trả hàng",
         "Đã hủy"
     ];
+    const ADMIN_EMAIL = "admin12@gmail.com";
+    const ADMIN_PASSWORD = "admin";
+    const ADMIN_SESSION_KEY = "mm_admin_authenticated";
 
     function readCart() {
         const stored = localStorage.getItem(CART_KEY);
@@ -48,7 +51,7 @@
         localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
     }
 
-    function createOrderFromCart() {
+    function createOrderFromCart(details = {}) {
         const cart = readCart();
         if (!cart.length) {
             throw new Error("Giỏ hàng đang trống.");
@@ -59,7 +62,13 @@
             createdAt: new Date().toISOString(),
             status: ORDER_STATUSES[0],
             items: cart.map((item) => ({ ...item })),
-            total: cart.reduce((sum, item) => sum + item.price * item.qty, 0)
+            total: cart.reduce((sum, item) => sum + item.price * item.qty, 0),
+            customer: {
+                name: details.name || "",
+                phone: details.phone || "",
+                address: details.address || ""
+            },
+            payment: details.payment || "COD"
         };
         const orders = readOrders();
         orders.unshift(order);
@@ -133,18 +142,23 @@
         registerForm.addEventListener("submit", (event) => {
             event.preventDefault();
             const name = document.getElementById("register-name").value.trim();
-            const email = document.getElementById("register-email").value.trim();
+            const email = document.getElementById("register-email").value.trim().toLowerCase();
             const password = document.getElementById("register-password").value;
             const confirmation = document.getElementById("confirm-password").value;
             if (password.length < 6 || password !== confirmation) {
-                message.textContent = password.length < 6
-                    ? "Mật khẩu cần có ít nhất 6 ký tự."
-                    : "Mật khẩu xác nhận không khớp.";
+                message.textContent = password.length < 6 ?
+                    "Mật khẩu cần có ít nhất 6 ký tự." :
+                    "Mật khẩu xác nhận không khớp.";
+                return;
+            }
+
+            if (email === ADMIN_EMAIL) {
+                message.textContent = "Email này được dành riêng cho tài khoản quản trị.";
                 return;
             }
 
             try {
-                if (localStorage.getItem("email") === email) {
+                if ((localStorage.getItem("email") || "").toLowerCase() === email) {
                     message.textContent = "Email này đã được đăng ký.";
                     return;
                 }
@@ -164,9 +178,21 @@
         loginForm.addEventListener("submit", (event) => {
             event.preventDefault();
             try {
-                const email = document.getElementById("login-email").value.trim();
+                const email = document.getElementById("login-email").value.trim().toLowerCase();
                 const password = document.getElementById("login-password").value;
-                if (email === localStorage.getItem("email") && password === localStorage.getItem("matKhau")) {
+                if (email === ADMIN_EMAIL) {
+                    if (password !== ADMIN_PASSWORD) {
+                        message.textContent = "Email hoặc mật khẩu không chính xác.";
+                        return;
+                    }
+
+                    sessionStorage.setItem(ADMIN_SESSION_KEY, "true");
+                    window.location.href = `${rootPrefix()}pages/admin.html`;
+                    return;
+                }
+
+                if (email === (localStorage.getItem("email") || "").toLowerCase() && password === localStorage.getItem("matKhau")) {
+                    sessionStorage.removeItem(ADMIN_SESSION_KEY);
                     window.location.href = `${rootPrefix()}index.html`;
                     return;
                 }

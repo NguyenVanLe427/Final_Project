@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán | M&M Shop</title>
+
+    <script src="../js/main.js" defer></script>
+    <script src="../js/checkout.js" defer></script>
+    <link rel="stylesheet" href="../css/checkout.css">
+</head>
+
+<body>
+
+    <div class="checkout-container">
+
+        <h1>THANH TOÁN ĐƠN HÀNG</h1>
+
+        <!-- Thông tin sản phẩm -->
+        <div id="order-info">
+            <h2>Thông tin đơn hàng</h2>
+
+            <div id="product-list"></div>
+
+            <h3 id="total-price"></h3>
+        </div>
+
+        <!-- Form thanh toán -->
+        <form id="checkout-form">
+
+            <h2>Thông tin người nhận</h2>
+
+            <label>Họ và tên:</label>
+            <input type="text" id="customer-name" required>
+
+            <label>Số điện thoại:</label>
+            <input type="tel" id="customer-phone" required>
+
+            <label>Địa chỉ nhận hàng:</label>
+            <textarea id="customer-address" required></textarea>
+
+            <h2>Phương thức thanh toán</h2>
+
+            <label class="payment-option">
+                <input type="radio" name="payment" value="COD" checked>
+                Thanh toán khi nhận hàng
+            </label>
+
+            <label class="payment-option">
+                <input type="radio" name="payment" value="BANK">
+                Chuyển khoản ngân hàng
+            </label>
+
+            <!-- Thông tin chuyển khoản -->
+            <div id="bank-info" class="bank-info">
+                <h3>Thông tin chuyển khoản</h3>
+                <p>Ngân hàng: Tên ngân hàng</p>
+                <p>Số tài khoản: 0000000000</p>
+                <p>Chủ tài khoản: TEN CHU TAI KHOAN</p>
+                <p>Nội dung: Mã đơn hàng</p>
+            </div>
+
+            <button type="submit">
+                XÁC NHẬN ĐẶT HÀNG
+            </button>
+
+        </form>
+
+        <!-- Thông báo sau khi đặt hàng -->
+        <div id="success-message" class="success-message">
+
+            <h2>Đặt hàng thành công!</h2>
+
+            <p id="order-code"></p>
+
+            <a href="orders.html">
+                Xem lịch sử đơn hàng
+            </a>
+
+            <br>
+
+            <a href="../index.html">
+                Quay về trang chủ
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

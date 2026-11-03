@@ -78,15 +78,7 @@
         });
 
         document.querySelector("[data-checkout]").addEventListener("click", () => {
-            try {
-                const order = window.Shop.createOrderFromCart();
-                window.location.href = `orders.html?created=${encodeURIComponent(order.id)}`;
-            } catch (error) {
-                console.error("Không thể tạo đơn hàng.", error);
-                message.textContent = error.message === "Giỏ hàng đang trống."
-                    ? error.message
-                    : "Không thể lưu đơn hàng trên trình duyệt này. Giỏ hàng của bạn vẫn được giữ lại.";
-            }
+            window.location.href = "checkout.html";
         });
         render();
     }

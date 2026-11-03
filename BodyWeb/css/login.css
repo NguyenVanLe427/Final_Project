@@ -1,14 +1,72 @@
 @import url("style.css");
+.auth-page {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px 14px;
+}
 
-.auth-page { display: grid; min-height: 100vh; place-items: center; padding: 24px 14px; }
-.auth-container { width: min(100%, 440px); text-align: center; }
-.auth-brand { align-items: center; margin: 0 auto 22px; }
-.auth-box { padding: 26px; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: var(--shadow); text-align: left; }
-.auth-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
-.tab-button { flex: 1; padding: 12px; border: 0; border-bottom: 3px solid transparent; background: #fff; }
-.tab-button.is-active { border-bottom-color: var(--brand); color: var(--brand); font-weight: 700; }
-.auth-box h1 { margin: 0; font-family: Georgia, serif; font-size: 25px; }
-.auth-box label { display: block; margin: 12px 0 6px; font-size: 14px; font-weight: 700; }
-.auth-box input { width: 100%; }
-.auth-box form > .button { margin-top: 16px; }
-.auth-container > .text-link { display: inline-block; margin-top: 20px; }
+.auth-container {
+    width: min(100%, 440px);
+    text-align: center;
+}
+
+.auth-brand {
+    align-items: center;
+    margin: 0 auto 22px;
+}
+
+.auth-box {
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: #fff;
+}
+
+.tab-button.is-active {
+    border-bottom-color: var(--brand);
+    color: var(--brand);
+    font-weight: 700;
+}
+
+.auth-box h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+.auth-box label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.auth-box input {
+    width: 100%;
+}
+
+.auth-box form>.button {
+    margin-top: 16px;
+}
+
+.auth-container>.text-link {
+    display: inline-block;
+    margin-top: 20px;
+}

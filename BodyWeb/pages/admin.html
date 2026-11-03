@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - M&M Shop</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h2 class="logo">M&M <span>ADMIN</span></h2>
+
+            <nav>
+                <a href="#" class="active">Quản lý sản phẩm</a>
+                <a href="../index.html">Về trang chủ</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Chế độ quản trị thử nghiệm</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="breadcrumb">M&M SHOP / ADMIN</p>
+                    <h1>Quản lý sản phẩm</h1>
+                </div>
+
+                <div class="topbar-actions">
+                    <a href="../index.html" class="store-link">Xem cửa hàng ↗</a>
+                    <button class="logout-button" id="admin-logout" type="button">Đăng xuất</button>
+                </div>
+            </header>
+
+            <!-- THỐNG KÊ -->
+            <section class="statistics">
+                <div class="stat-card">
+                    <p>Tổng sản phẩm</p>
+                    <h2 id="total-products">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Tổng danh mục</p>
+                    <h2 id="total-categories">0</h2>
+                </div>
+            </section>
+
+            <!-- DANH SÁCH SẢN PHẨM -->
+            <section class="content-box">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Danh sách sản phẩm</h2>
+                        <p>Quản lý thông tin sản phẩm của cửa hàng.</p>
+                    </div>
+
+                    <button class="btn-add" id="add-product">
+                        + Thêm sản phẩm
+                    </button>
+                </div>
+
+                <!-- TÌM KIẾM VÀ LỌC -->
+                <div class="toolbar">
+                    <input
+                        type="text"
+                        id="search-product"
+                        placeholder="Tìm kiếm sản phẩm..."
+                    >
+
+                    <select id="filter-category">
+                        <option value="">Tất cả danh mục</option>
+                    </select>
+                </div>
+
+                <!-- BẢNG SẢN PHẨM -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Danh mục</th>
+                                <th>Giá bán</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="product-list"></tbody>
+                    </table>
+                </div>
+
+                <p id="empty-message" class="empty-message" hidden>
+                    Không tìm thấy sản phẩm.
+                </p>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- FORM THÊM / SỬA SẢN PHẨM -->
+    <div class="modal" id="product-modal" hidden>
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 id="modal-title">Thêm sản phẩm</h2>
+                <button id="close-modal" type="button">×</button>
+            </div>
+
+            <form id="product-form">
+
+                <input type="hidden" id="product-id">
+
+                <label for="product-name">Tên sản phẩm</label>
+                <input
+                    type="text"
+                    id="product-name"
+                    required
+                    placeholder="Nhập tên sản phẩm"
+                >
+
+                <label for="product-category">Danh mục</label>
+                <select id="product-category" required></select>
+
+                <label for="product-price">Giá bán (VNĐ)</label>
+                <input
+                    type="number"
+                    id="product-price"
+                    min="0"
+                    required
+                    placeholder="Nhập giá bán"
+                >
+
+                <label for="product-image">Tên file hình ảnh</label>
+                <input
+                    type="text"
+                    id="product-image"
+                    required
+                    placeholder="Ví dụ: product-09.png"
+                >
+
+                <p class="image-note">
+                    Hình ảnh cần nằm trong thư mục images/products/.
+                </p>
+
+                <div class="form-buttons">
+                    <button type="button" id="cancel-modal" class="btn-cancel">
+                        Hủy
+                    </button>
+
+                    <button type="submit" class="btn-save">
+                        Lưu sản phẩm
+                    </button>
+                </div>
+
+                <p id="form-message"></p>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="../js/catalog-store.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
