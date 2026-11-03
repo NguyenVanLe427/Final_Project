@@ -2,36 +2,8 @@
 (function () {
     "use strict";
 
-    // 1. DANH SÁCH DANH MỤC
-    const categories = [
-        { name: "Thời trang nam", image: "category-men-clothes.png" },
-        { name: "Đồng hồ", image: "category-watches.png" },
-        { name: "Giày nam", image: "category-men-shoes.png" },
-        { name: "Thời trang nữ", image: "category-women-clothes.png" },
-        { name: "Làm đẹp", image: "category-beauty.png" },
-        { name: "Giày nữ", image: "category-women-shoes.png" },
-        { name: "Túi xách", image: "category-bags.png" },
-        { name: "Phụ kiện", image: "category-accessories.png" }
-    ];
-
-
-    // 2. DANH SÁCH SẢN PHẨM
-    const products = [
-        { id: "1", name: "Áo thời trang nam", category: "Thời trang nam", image: "product-01.png", price: 399000, slot: "Áo" },
-        { id: "2", name: "Đồng hồ thanh lịch", category: "Đồng hồ", image: "product-02.png", price: 890000, slot: "Phụ kiện" },
-        { id: "3", name: "Giày thể thao nam", category: "Giày nam", image: "product-03.png", price: 650000, slot: "Giày" },
-        { id: "4", name: "Trang phục nữ hiện đại", category: "Thời trang nữ", image: "product-04.png", price: 459000, slot: "Áo" },
-        { id: "5", name: "Sản phẩm chăm sóc sắc đẹp", category: "Làm đẹp", image: "product-05.png", price: 299000, slot: "Phụ kiện" },
-        { id: "6", name: "Giày nữ phong cách", category: "Giày nữ", image: "product-06.png", price: 579000, slot: "Giày" },
-        { id: "7", name: "Túi xách thời trang", category: "Túi xách", image: "product-07.png", price: 720000, slot: "Phụ kiện" },
-        { id: "8", name: "Phụ kiện thời trang", category: "Phụ kiện", image: "product-08.png", price: 199000, slot: "Phụ kiện" },
-
-        // 4 SẢN PHẨM MỚI
-        { id: "9", name: "Áo thun ONTOP Adventure", category: "Thời trang nam", image: "product-09.png", price: 199000, slot: "Áo" },
-        { id: "10", name: "Giày thể thao phối màu", category: "Giày nữ", image: "product-10.png", price: 350000, slot: "Giày" },
-        { id: "11", name: "Dây chuyền bạc hoa", category: "Phụ kiện", image: "product-11.png", price: 490000, slot: "Phụ kiện" },
-        { id: "12", name: "Đồng hồ sang trọng", category: "Đồng hồ", image: "product-12.png", price: 1200000, slot: "Phụ kiện" }
-    ];
+    const categories = window.CatalogStore.readCategories();
+    const products = window.CatalogStore.readProducts();
 
 
     // 3. XỬ LÝ KÝ TỰ ĐẶC BIỆT
@@ -115,16 +87,9 @@
         }
 
 
-        // HIỂN THỊ 4 SẢN PHẨM BÁN CHẠY MỚI
+        // Hiển thị các sản phẩm còn lại để toàn bộ danh mục có mặt trên trang chủ
         if (bestSelling) {
-            const bestProducts = [
-                products[8],
-                products[9],
-                products[10],
-                products[11]
-            ];
-
-            bestSelling.innerHTML = bestProducts.map(card).join("");
+            bestSelling.innerHTML = products.slice(4).map(card).join("");
         }
 
 
@@ -340,6 +305,17 @@
 
         renderDetail();
 
+    });
+
+    window.addEventListener("storage", (event) => {
+        const catalogKeys = [
+            window.CatalogStore.PRODUCT_KEY,
+            window.CatalogStore.CATEGORY_KEY
+        ];
+
+        if (event.key === null || catalogKeys.includes(event.key)) {
+            window.location.reload();
+        }
     });
 
 

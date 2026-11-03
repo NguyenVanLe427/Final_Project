@@ -12,60 +12,17 @@
         window.location.replace("login.html");
     });
 
-    // Khóa lưu dữ liệu trong LocalStorage
-    const PRODUCT_KEY = "mm_products";
-    const CATEGORY_KEY = "mm_categories";
-
-    // Danh mục hiện có
-    const defaultCategories = [
-        { name: "Thời trang nam", image: "category-men-clothes.png" },
-        { name: "Đồng hồ", image: "category-watches.png" },
-        { name: "Giày nam", image: "category-men-shoes.png" },
-        { name: "Thời trang nữ", image: "category-women-clothes.png" },
-        { name: "Làm đẹp", image: "category-beauty.png" },
-        { name: "Giày nữ", image: "category-women-shoes.png" },
-        { name: "Túi xách", image: "category-bags.png" },
-        { name: "Phụ kiện", image: "category-accessories.png" }
-    ];
-
-    // Sản phẩm ban đầu
-    const defaultProducts = [
-        { id: "1", name: "Áo thời trang nam", category: "Thời trang nam", image: "product-01.png", price: 399000, slot: "Áo" },
-        { id: "2", name: "Đồng hồ thanh lịch", category: "Đồng hồ", image: "product-02.png", price: 890000, slot: "Phụ kiện" },
-        { id: "3", name: "Giày thể thao nam", category: "Giày nam", image: "product-03.png", price: 650000, slot: "Giày" },
-        { id: "4", name: "Trang phục nữ hiện đại", category: "Thời trang nữ", image: "product-04.png", price: 459000, slot: "Áo" },
-        { id: "5", name: "Sản phẩm chăm sóc sắc đẹp", category: "Làm đẹp", image: "product-05.png", price: 299000, slot: "Phụ kiện" },
-        { id: "6", name: "Giày nữ phong cách", category: "Giày nữ", image: "product-06.png", price: 579000, slot: "Giày" },
-        { id: "7", name: "Túi xách thời trang", category: "Túi xách", image: "product-07.png", price: 720000, slot: "Phụ kiện" },
-        { id: "8", name: "Phụ kiện thời trang", category: "Phụ kiện", image: "product-08.png", price: 199000, slot: "Phụ kiện" }
-    ];
-
-    // Đọc dữ liệu từ LocalStorage
-    function readData(key, defaultData) {
-        const saved = localStorage.getItem(key);
-
-        if (!saved) {
-            return defaultData.map(item => ({ ...item }));
-        }
-
-        try {
-            const data = JSON.parse(saved);
-            return Array.isArray(data) ? data : defaultData.map(item => ({ ...item }));
-        } catch (error) {
-            return defaultData.map(item => ({ ...item }));
-        }
-    }
-
-    let products = readData(PRODUCT_KEY, defaultProducts);
-    let categories = readData(CATEGORY_KEY, defaultCategories);
+    const catalogStore = window.CatalogStore;
+    let products = catalogStore.readProducts();
+    let categories = catalogStore.readCategories();
 
     // Khởi tạo dữ liệu khi mở Admin lần đầu
-    if (!localStorage.getItem(PRODUCT_KEY)) {
-        localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
+    if (localStorage.getItem(catalogStore.PRODUCT_KEY) === null) {
+        catalogStore.saveProducts(products);
     }
 
-    if (!localStorage.getItem(CATEGORY_KEY)) {
-        localStorage.setItem(CATEGORY_KEY, JSON.stringify(categories));
+    if (localStorage.getItem(catalogStore.CATEGORY_KEY) === null) {
+        catalogStore.saveCategories(categories);
     }
 
     // Lấy phần tử HTML
@@ -80,12 +37,12 @@
 
     // Lưu sản phẩm
     function saveProducts() {
-        localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
+        catalogStore.saveProducts(products);
     }
 
     // Lưu danh mục
     function saveCategories() {
-        localStorage.setItem(CATEGORY_KEY, JSON.stringify(categories));
+        catalogStore.saveCategories(categories);
     }
 
     // Hiển thị danh mục trong bộ lọc và form
@@ -220,8 +177,6 @@
     function addProduct(product) {
         product.id = String(Date.now());
         products.push(product);
-        saveProducts();
-        renderProducts();
     }
 
     // Sửa sản phẩm
