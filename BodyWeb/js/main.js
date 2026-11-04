@@ -346,6 +346,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+        if (window.CatalogStore) {
+            window.CatalogStore.readProducts();
+        }
+
         updateCartCount();
         initUserSession();
         clearLoginFields();

@@ -1,37 +1,39 @@
 @import url("style.css");
+
 .cart-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 25px;
     align-items: start;
 }
 
 .cart-items {
     display: grid;
-    gap: 12px;
+    gap: 13px;
 }
 
 .cart-item {
     display: grid;
-    grid-template-columns: 100px minmax(0, 1fr) auto;
+    grid-template-columns: 112px minmax(0, 1fr) auto;
     align-items: center;
-    gap: 16px;
-    padding: 14px;
+    gap: 18px;
+    padding: 16px;
     border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #fff;
+    background: #fffdfb;
 }
 
 .cart-item img {
-    width: 100px;
-    height: 100px;
+    width: 112px;
+    height: 112px;
     object-fit: contain;
-    background: #faf8f7;
+    background: #f3efeb;
 }
 
 .cart-item h2 {
-    margin: 0 0 4px;
-    font-size: 16px;
+    margin: 0 0 5px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .cart-item p {
@@ -43,37 +45,41 @@
 .cart-item-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
 }
 
 .cart-item-actions input {
-    width: 60px;
-    padding: 7px;
+    width: 62px;
+    padding: 8px;
     border: 1px solid var(--line);
-    border-radius: 5px;
+    background: #fff;
     text-align: center;
 }
 
 .remove-item {
-    padding: 7px;
+    padding: 8px;
     border: 0;
     background: transparent;
     color: var(--brand);
+    font-size: 13px;
 }
 
 .cart-summary {
-    padding: 20px;
+    position: sticky;
+    top: 20px;
+    padding: 22px;
     border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #fff;
+    background: #fffdfb;
 }
 
 .cart-summary h2 {
     margin: 0 0 18px;
-    font-size: 19px;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
 }
 
-.cart-summary>p,
+.cart-summary > p,
 .cart-total {
     display: flex;
     justify-content: space-between;
@@ -81,7 +87,7 @@
 }
 
 .cart-total {
-    padding-top: 12px;
+    padding-top: 13px;
     border-top: 1px solid var(--line);
     font-size: 17px;
 }
@@ -97,19 +103,25 @@
         grid-template-columns: 1fr;
         gap: 18px;
     }
+
     .cart-item {
         grid-template-columns: 76px minmax(0, 1fr);
         gap: 10px;
+        padding: 11px;
     }
+
     .cart-item img {
         width: 76px;
         height: 76px;
     }
+
     .cart-item-actions {
         grid-column: 2;
         justify-content: flex-start;
     }
+
     .cart-summary {
+        position: static;
         order: -1;
     }
 }
