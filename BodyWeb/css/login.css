@@ -70,3 +70,26 @@
     display: inline-block;
     margin-top: 20px;
 }
+
+
+/* PHẦN THÊM: HIỂN THỊ VÀ ẨN MẬT KHẨU */
+
+.password-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-box input {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}

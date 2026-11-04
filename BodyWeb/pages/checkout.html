@@ -32,10 +32,13 @@
             <h2>Thông tin người nhận</h2>
 
             <label>Họ và tên:</label>
-            <input type="text" id="customer-name" required>
+            <input type="text" id="customer-name" readonly required>
 
             <label>Số điện thoại:</label>
-            <input type="tel" id="customer-phone" required>
+            <input type="tel" id="customer-phone" readonly required>
+
+            <label>Email:</label>
+            <input type="email" id="customer-email" readonly required>
 
             <label>Địa chỉ nhận hàng:</label>
             <textarea id="customer-address" required></textarea>
@@ -52,13 +55,33 @@
                 Chuyển khoản ngân hàng
             </label>
 
-            <!-- Thông tin chuyển khoản -->
-            <div id="bank-info" class="bank-info">
-                <h3>Thông tin chuyển khoản</h3>
-                <p>Ngân hàng: Tên ngân hàng</p>
-                <p>Số tài khoản: 0000000000</p>
-                <p>Chủ tài khoản: TEN CHU TAI KHOAN</p>
-                <p>Nội dung: Mã đơn hàng</p>
+            <!-- Thông tin tài khoản ngân hàng -->
+            <div id="bank-info" class="bank-info" style="display: none;">
+
+                <h3>Thông tin tài khoản ngân hàng</h3>
+
+                <label for="bank-select">Chọn ngân hàng:</label>
+                <select id="bank-select">
+                    <option value="">-- Chọn ngân hàng --</option>
+                    <option value="Vietcombank">Vietcombank</option>
+                    <option value="BIDV">BIDV</option>
+                    <option value="VietinBank">VietinBank</option>
+                    <option value="MB Bank">MB Bank</option>
+                </select>
+
+                <label for="bank-account">Số tài khoản:</label>
+                <input type="text" id="bank-account" placeholder="Nhập số tài khoản">
+
+                <button type="button" id="check-account">
+                    Kiểm tra
+                </button>
+
+                <!-- Chỉ hiện tên sau khi kiểm tra -->
+                <div id="account-result" style="display: none;">
+                    <label>Chủ tài khoản:</label>
+                    <input type="text" id="bank-owner" readonly>
+                </div>
+
             </div>
 
             <button type="submit">
@@ -89,4 +112,5 @@
     </div>
 
 </body>
+
 </html>
