@@ -21,13 +21,13 @@
                 <button class="tab-button" type="button" data-auth-tab="register">Đăng ký</button>
             </div>
             <p class="form-message" data-auth-message role="status" aria-live="polite"></p>
-            <form data-auth-form="login">
+            <form data-auth-form="login" autocomplete="off">
                 <h1>Chào mừng trở lại!</h1>
                 <p class="section-intro">Đăng nhập để tiếp tục mua sắm.</p>
                 <label for="login-email">Email</label>
-                <input id="login-email" type="email" autocomplete="email" required>
+                <input id="login-email" type="email" autocomplete="off" required>
                 <label for="login-password">Mật khẩu</label>
-                <input id="login-password" type="password" autocomplete="current-password" required>
+                <input id="login-password" type="password" autocomplete="new-password" required>
                 <button class="button button-primary button-full" type="submit">Đăng nhập</button>
             </form>
 

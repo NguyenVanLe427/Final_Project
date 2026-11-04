@@ -8,6 +8,12 @@
         const bankInfo = document.getElementById("bank-info");
         const successMessage = document.getElementById("success-message");
         const orderInfo = document.getElementById("order-info");
+        const isAuthenticated = sessionStorage.getItem("mm_user_authenticated") === "true";
+        if (!isAuthenticated) {
+            window.location.replace("login.html?return=checkout.html");
+            return;
+        }
+
         const cart = window.Shop.readCart();
         const message = document.createElement("p");
         message.className = "form-message";

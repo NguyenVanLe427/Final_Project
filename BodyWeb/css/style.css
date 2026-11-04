@@ -146,8 +146,17 @@ select {
 }
 
 .header-links a:hover,
+.header-links button:hover,
 .text-link:hover {
     color: var(--brand);
+}
+
+.header-links .logout-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
 }
 
 .cart-count {

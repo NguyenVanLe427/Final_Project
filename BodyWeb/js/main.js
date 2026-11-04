@@ -14,6 +14,40 @@
     const ADMIN_EMAIL = "admin12@gmail.com";
     const ADMIN_PASSWORD = "admin";
     const ADMIN_SESSION_KEY = "mm_admin_authenticated";
+    const USER_SESSION_KEY = "mm_user_authenticated";
+    const USERS_KEY = "mm_users";
+
+    function readUsers() {
+        const storedUsers = localStorage.getItem(USERS_KEY);
+        if (storedUsers !== null) {
+            const users = JSON.parse(storedUsers);
+            if (!Array.isArray(users)) {
+                throw new Error("Dữ liệu tài khoản không đúng định dạng.");
+            }
+            return users;
+        }
+
+        const legacyEmail = (localStorage.getItem("email") || "").trim().toLowerCase();
+        const legacyPassword = localStorage.getItem("matKhau");
+        if (!legacyEmail || legacyPassword === null) return [];
+
+        return [{
+            name: localStorage.getItem("hoTen") || "",
+            email: legacyEmail,
+            password: legacyPassword
+        }];
+    }
+
+    function saveUsers(users) {
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+
+    function loginDestination() {
+        const returnTo = new URLSearchParams(window.location.search).get("return");
+        return returnTo === "checkout.html"
+            ? `${rootPrefix()}pages/checkout.html`
+            : `${rootPrefix()}index.html`;
+    }
 
     function readCart() {
         const stored = localStorage.getItem(CART_KEY);
@@ -52,6 +86,10 @@
     }
 
     function createOrderFromCart(details = {}) {
+        if (sessionStorage.getItem(USER_SESSION_KEY) !== "true") {
+            throw new Error("Vui lòng đăng nhập trước khi đặt hàng.");
+        }
+
         const cart = readCart();
         if (!cart.length) {
             throw new Error("Giỏ hàng đang trống.");
@@ -119,6 +157,20 @@
         return document.body.dataset.rootPrefix || "";
     }
 
+    function initUserSession() {
+        const loginLink = document.querySelector("[data-user-login]");
+        const logoutButton = document.querySelector("[data-user-logout]");
+        if (!loginLink || !logoutButton) return;
+
+        const isAuthenticated = sessionStorage.getItem(USER_SESSION_KEY) === "true";
+        loginLink.hidden = isAuthenticated;
+        logoutButton.hidden = !isAuthenticated;
+        logoutButton.addEventListener("click", () => {
+            sessionStorage.removeItem(USER_SESSION_KEY);
+            window.location.href = `${rootPrefix()}index.html`;
+        });
+    }
+
     function showAuthTab(tabName) {
         document.querySelectorAll("[data-auth-form]").forEach((form) => {
             form.hidden = form.dataset.authForm !== tabName;
@@ -128,6 +180,13 @@
         });
         const message = document.querySelector("[data-auth-message]");
         if (message) message.textContent = "";
+    }
+
+    function clearLoginFields() {
+        const email = document.getElementById("login-email");
+        const password = document.getElementById("login-password");
+        if (email) email.value = "";
+        if (password) password.value = "";
     }
 
     function initAuth() {
@@ -158,13 +217,13 @@
             }
 
             try {
-                if ((localStorage.getItem("email") || "").toLowerCase() === email) {
+                const users = readUsers();
+                if (users.some((user) => user.email === email)) {
                     message.textContent = "Email này đã được đăng ký.";
                     return;
                 }
-                localStorage.setItem("hoTen", name);
-                localStorage.setItem("email", email);
-                localStorage.setItem("matKhau", password);
+                users.push({ name, email, password });
+                saveUsers(users);
                 document.getElementById("login-email").value = email;
                 registerForm.reset();
                 showAuthTab("login");
@@ -186,14 +245,17 @@
                         return;
                     }
 
+                    sessionStorage.removeItem(USER_SESSION_KEY);
                     sessionStorage.setItem(ADMIN_SESSION_KEY, "true");
                     window.location.href = `${rootPrefix()}pages/admin.html`;
                     return;
                 }
 
-                if (email === (localStorage.getItem("email") || "").toLowerCase() && password === localStorage.getItem("matKhau")) {
+                const user = readUsers().find((account) => account.email === email && account.password === password);
+                if (user) {
                     sessionStorage.removeItem(ADMIN_SESSION_KEY);
-                    window.location.href = `${rootPrefix()}index.html`;
+                    sessionStorage.setItem(USER_SESSION_KEY, "true");
+                    window.location.href = loginDestination();
                     return;
                 }
                 message.textContent = "Email hoặc mật khẩu không chính xác.";
@@ -206,6 +268,8 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         updateCartCount();
+        initUserSession();
+        clearLoginFields();
         initAuth();
         document.querySelectorAll("[data-search-form]").forEach((form) => {
             form.addEventListener("submit", (event) => {
@@ -216,6 +280,8 @@
             });
         });
     });
+
+    window.addEventListener("pageshow", clearLoginFields);
 
     window.Shop = {
         readCart,

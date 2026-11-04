@@ -78,7 +78,10 @@
         });
 
         document.querySelector("[data-checkout]").addEventListener("click", () => {
-            window.location.href = "checkout.html";
+            const isAuthenticated = sessionStorage.getItem("mm_user_authenticated") === "true";
+            window.location.href = isAuthenticated
+                ? "checkout.html"
+                : "login.html?return=checkout.html";
         });
         render();
     }
