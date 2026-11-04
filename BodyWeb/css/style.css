@@ -386,9 +386,10 @@ main {
     }
     .site-nav {
         justify-content: space-around;
-        gap: 8px;
+        flex-wrap: wrap;
+        gap: 6px 12px;
         padding: 11px 8px;
-        font-size: 13px;
+        font-size: 12px;
     }
     .content-section {
         padding: 30px 14px;

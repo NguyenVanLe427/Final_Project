@@ -2,6 +2,15 @@
     "use strict";
 
     const CART_KEY = "cart";
+    const ORDERS_KEY = "orders";
+    const ORDER_STATUSES = [
+        "Chờ xác nhận",
+        "Vận chuyển",
+        "Chờ giao hàng",
+        "Hoàn thành",
+        "Trả hàng",
+        "Đã hủy"
+    ];
     const ADMIN_EMAIL = "admin12@gmail.com";
     const ADMIN_PASSWORD = "admin";
     const ADMIN_SESSION_KEY = "mm_admin_authenticated";
@@ -25,6 +34,51 @@
     function writeCart(items) {
         localStorage.setItem(CART_KEY, JSON.stringify(items));
         updateCartCount();
+    }
+
+    function readOrders() {
+        const stored = localStorage.getItem(ORDERS_KEY);
+        if (!stored) return [];
+
+        const parsed = JSON.parse(stored);
+        if (!Array.isArray(parsed)) {
+            throw new Error("Dữ liệu đơn hàng không đúng định dạng.");
+        }
+        return parsed;
+    }
+
+    function writeOrders(orders) {
+        localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+    }
+
+    function createOrderFromCart(details = {}) {
+        const cart = readCart();
+        if (!cart.length) {
+            throw new Error("Giỏ hàng đang trống.");
+        }
+
+        const order = {
+            id: `MM-${Date.now()}`,
+            createdAt: new Date().toISOString(),
+            status: ORDER_STATUSES[0],
+            items: cart.map((item) => ({ ...item })),
+            total: cart.reduce((sum, item) => sum + item.price * item.qty, 0),
+            customer: {
+                name: details.name || "",
+                phone: details.phone || "",
+                email: details.email || "",
+                address: details.address || ""
+            },
+            payment: details.payment || "COD",
+            bank: details.bank || "",
+            accountNumber: details.accountNumber || "",
+            accountOwner: details.accountOwner || ""
+        };
+        const orders = readOrders();
+        orders.unshift(order);
+        writeOrders(orders);
+        writeCart([]);
+        return order;
     }
 
     function addToCart(product, quantity) {
@@ -232,6 +286,14 @@
         });
     });
 
-    window.Shop = { readCart, writeCart, addToCart, formatPrice };
-
+    window.Shop = {
+        readCart,
+        writeCart,
+        addToCart,
+        readOrders,
+        writeOrders,
+        createOrderFromCart,
+        orderStatuses: ORDER_STATUSES,
+        formatPrice
+    };
 })();

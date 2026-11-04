@@ -1,215 +1,141 @@
-// Lấy các phần tử HTML
-var productList = document.getElementById("product-list");
-var totalPrice = document.getElementById("total-price");
-var checkoutForm = document.getElementById("checkout-form");
-var bankInfo = document.getElementById("bank-info");
-var successMessage = document.getElementById("success-message");
+(function () {
+    "use strict";
 
-// Lấy thông tin tài khoản khách hàng
-var customerName = document.getElementById("customer-name");
-var customerPhone = document.getElementById("customer-phone");
-var customerEmail = document.getElementById("customer-email");
+    function initCheckout() {
+        const productList = document.getElementById("product-list");
+        const totalPrice = document.getElementById("total-price");
+        const checkoutForm = document.getElementById("checkout-form");
+        const bankInfo = document.getElementById("bank-info");
+        const successMessage = document.getElementById("success-message");
+        const orderInfo = document.getElementById("order-info");
+        const bankSelect = document.getElementById("bank-select");
+        const bankAccount = document.getElementById("bank-account");
+        const bankOwner = document.getElementById("bank-owner");
+        const accountResult = document.getElementById("account-result");
+        const message = document.createElement("p");
+        let accountChecked = false;
 
-// Tự động lấy thông tin từ tài khoản đã đăng ký
-customerName.value = localStorage.getItem("hoTen") || "";
-customerPhone.value = localStorage.getItem("soDienThoai") || "";
-customerEmail.value = localStorage.getItem("email") || "";
+        message.className = "form-message";
+        message.setAttribute("role", "status");
+        message.setAttribute("aria-live", "polite");
+        checkoutForm.before(message);
 
-// Lấy các phần tử ngân hàng
-var bankSelect = document.getElementById("bank-select");
-var bankAccount = document.getElementById("bank-account");
-var bankOwner = document.getElementById("bank-owner");
-var checkAccount = document.getElementById("check-account");
-var accountResult = document.getElementById("account-result");
+        document.getElementById("customer-name").value = localStorage.getItem("hoTen") || "";
+        document.getElementById("customer-phone").value = localStorage.getItem("soDienThoai") || "";
+        document.getElementById("customer-email").value = localStorage.getItem("email") || "";
 
-// Ban đầu chưa có tên chủ tài khoản
-var accountChecked = false;
-
-
-// Khi nhập số tài khoản
-bankAccount.addEventListener("input", function() {
-    accountChecked = false;
-    accountResult.style.display = "none";
-    bankOwner.value = "";
-});
-
-// Khi thay đổi ngân hàng
-bankSelect.addEventListener("change", function() {
-    accountChecked = false;
-    accountResult.style.display = "none";
-    bankOwner.value = "";
-});
-
-// Nhấn nút kiểm tra
-checkAccount.addEventListener("click", function() {
-
-    var accountNumber = bankAccount.value.trim();
-
-    if (bankSelect.value == "") {
-        alert("Vui lòng chọn ngân hàng!");
-        return;
-    }
-
-    if (accountNumber == "") {
-        alert("Vui lòng nhập số tài khoản!");
-        return;
-    }
-
-    // Lấy tên đã đăng ký Shop
-    var name = localStorage.getItem("hoTen");
-
-    if (!name) {
-        alert("Không tìm thấy tên tài khoản!");
-        return;
-    }
-
-    // Hiển thị tên chủ tài khoản
-    bankOwner.value = name;
-    accountResult.style.display = "block";
-
-    accountChecked = true;
-});
-
-
-// Lấy giỏ hàng
-var cart = Shop.readCart();
-
-// Tính tổng tiền
-var total = 0;
-
-// Hiển thị sản phẩm
-if (cart.length == 0) {
-    productList.innerHTML = "<p>Giỏ hàng đang trống!</p>";
-    checkoutForm.style.display = "none";
-} else {
-    cart.forEach(function(product) {
-
-        var itemTotal = product.price * product.qty;
-
-        total = total + itemTotal;
-
-        productList.innerHTML += `
-            <div class="product-item">
-                <span>${product.name} x ${product.qty}</span>
-                <span>${Shop.formatPrice(itemTotal)}</span>
-            </div>
-        `;
-    });
-
-    totalPrice.innerHTML =
-        "Tổng tiền: " + Shop.formatPrice(total);
-}
-
-
-// Chọn phương thức thanh toán
-var paymentOptions = document.querySelectorAll(
-    'input[name="payment"]'
-);
-
-paymentOptions.forEach(function(option) {
-
-    option.addEventListener("change", function() {
-
-        if (this.value == "BANK") {
-            bankInfo.style.display = "block";
-        } else {
-            bankInfo.style.display = "none";
-        }
-
-    });
-
-});
-
-
-// Xác nhận đặt hàng
-checkoutForm.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-    if (cart.length == 0) {
-        alert("Giỏ hàng đang trống!");
-        return;
-    }
-
-    // Kiểm tra thông tin tài khoản
-    if (!customerName.value || !customerPhone.value || !customerEmail.value) {
-        alert("Không tìm thấy thông tin tài khoản!");
-        return;
-    }
-
-    // Lấy thông tin người nhận
-    var name = customerName.value;
-    var phone = customerPhone.value;
-    var email = customerEmail.value;
-    var address = document.getElementById("customer-address").value;
-
-    // Lấy phương thức thanh toán
-    var payment = document.querySelector(
-        'input[name="payment"]:checked'
-    ).value;
-
-    // Lấy thông tin ngân hàng
-    var bank = "";
-    var accountNumber = "";
-    var accountOwner = "";
-
-    if (payment == "BANK") {
-
-        bank = bankSelect.value;
-        accountNumber = bankAccount.value.trim();
-        accountOwner = bankOwner.value;
-
-        if (bank == "" || accountNumber == "") {
-            alert("Vui lòng chọn ngân hàng và nhập số tài khoản!");
+        const cart = window.Shop.readCart();
+        if (cart.length === 0) {
+            productList.textContent = "Giỏ hàng đang trống!";
+            checkoutForm.hidden = true;
             return;
         }
 
-        if (accountChecked == false) {
-            alert("Vui lòng nhấn Kiểm tra số tài khoản trước!");
-            return;
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        cart.forEach((item) => {
+            const row = document.createElement("div");
+            row.className = "product-item";
+            const name = document.createElement("span");
+            name.textContent = `${item.name} x ${item.qty}`;
+            const price = document.createElement("span");
+            price.textContent = window.Shop.formatPrice(item.price * item.qty);
+            row.append(name, price);
+            productList.append(row);
+        });
+        totalPrice.textContent = `Tổng tiền: ${window.Shop.formatPrice(total)}`;
+
+        function resetAccountCheck() {
+            accountChecked = false;
+            accountResult.style.display = "none";
+            bankOwner.value = "";
         }
+
+        bankAccount.addEventListener("input", resetAccountCheck);
+        bankSelect.addEventListener("change", resetAccountCheck);
+
+        document.getElementById("check-account").addEventListener("click", () => {
+            if (!bankSelect.value) {
+                message.textContent = "Vui lòng chọn ngân hàng!";
+                return;
+            }
+
+            if (!bankAccount.value.trim()) {
+                message.textContent = "Vui lòng nhập số tài khoản!";
+                return;
+            }
+
+            const name = localStorage.getItem("hoTen");
+            if (!name) {
+                message.textContent = "Không tìm thấy tên tài khoản!";
+                return;
+            }
+
+            bankOwner.value = name;
+            accountResult.style.display = "block";
+            accountChecked = true;
+            message.textContent = "";
+        });
+
+        document.querySelectorAll('input[name="payment"]').forEach((option) => {
+            option.addEventListener("change", () => {
+                bankInfo.style.display = option.value === "BANK" && option.checked ? "block" : "none";
+                message.textContent = "";
+            });
+        });
+
+        checkoutForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const payment = document.querySelector('input[name="payment"]:checked');
+            if (!payment) {
+                message.textContent = "Vui lòng chọn phương thức thanh toán.";
+                return;
+            }
+
+            if (payment.value === "BANK") {
+                if (!bankSelect.value || !bankAccount.value.trim()) {
+                    message.textContent = "Vui lòng chọn ngân hàng và nhập số tài khoản!";
+                    return;
+                }
+
+                if (!accountChecked) {
+                    message.textContent = "Vui lòng nhấn Kiểm tra số tài khoản trước!";
+                    return;
+                }
+            }
+
+            const customerName = document.getElementById("customer-name").value.trim();
+            const customerPhone = document.getElementById("customer-phone").value.trim();
+            const customerEmail = document.getElementById("customer-email").value.trim();
+            if (!customerName || !customerPhone || !customerEmail) {
+                message.textContent = "Không tìm thấy thông tin tài khoản!";
+                return;
+            }
+
+            try {
+                const order = window.Shop.createOrderFromCart({
+                    name: customerName,
+                    phone: customerPhone,
+                    email: customerEmail,
+                    address: document.getElementById("customer-address").value.trim(),
+                    payment: payment.value,
+                    bank: payment.value === "BANK" ? bankSelect.value : "",
+                    accountNumber: payment.value === "BANK" ? bankAccount.value.trim() : "",
+                    accountOwner: payment.value === "BANK" ? bankOwner.value : ""
+                });
+                checkoutForm.hidden = true;
+                orderInfo.hidden = true;
+                document.getElementById("order-code").textContent = `Mã đơn hàng: ${order.id}`;
+                successMessage.querySelector('a[href="orders.html"]').href =
+                    `orders.html?created=${encodeURIComponent(order.id)}`;
+                successMessage.style.display = "block";
+            } catch (error) {
+                console.error("Không thể tạo đơn hàng.", error);
+                message.textContent = error.message === "Giỏ hàng đang trống."
+                    ? error.message
+                    : "Không thể lưu đơn hàng trên trình duyệt này. Giỏ hàng của bạn vẫn được giữ lại.";
+            }
+        });
     }
 
-    // Tạo đơn hàng
-    var order = {
-        id: "MM" + Date.now(),
-        name: name,
-        phone: phone,
-        email: email,
-        address: address,
-        payment: payment,
-        bank: bank,
-        accountNumber: accountNumber,
-        accountOwner: accountOwner,
-        products: cart,
-        total: total,
-        date: new Date().toLocaleString("vi-VN"),
-        status: "Đang xử lý"
-    };
-
-    // Lấy lịch sử đơn hàng
-    var orders = JSON.parse(
-        localStorage.getItem("orders")
-    ) || [];
-
-    // Thêm đơn hàng mới
-    orders.push(order);
-
-    // Lưu đơn hàng
-    localStorage.setItem(
-        "orders",
-        JSON.stringify(orders)
-    );
-
-    // Xóa giỏ hàng
-    Shop.writeCart([]);
-
-    // Hiển thị thông báo thành công
-    checkoutForm.style.display = "none";
-    document.getElementById("order-info").style.display = "none";
-    successMessage.style.display = "block";
-
-    document.getElementById("order-code").innerHTML =
-        "Mã đơn hàng: " + order.id;
-
-});
+    document.addEventListener("DOMContentLoaded", initCheckout);
+})();
