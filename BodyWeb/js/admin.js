@@ -98,7 +98,7 @@
             info.className = "product-info";
 
             const image = document.createElement("img");
-            image.src = "../images/products/" + product.image;
+            image.src = window.Shop.productImagePath(product.image);
             image.alt = product.name;
             image.onerror = function () {
                 this.style.visibility = "hidden";

@@ -52,6 +52,7 @@ form label {
 
 form input[type="text"],
 form input[type="tel"],
+form input[type="email"],
 form textarea {
     width: 100%;
     padding: 12px;

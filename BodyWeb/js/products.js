@@ -20,7 +20,7 @@
 
     // 4. TẠO ĐƯỜNG DẪN HÌNH ẢNH
     function assetPath(filename) {
-        return `${document.body.dataset.rootPrefix || ""}images/products/${filename}`;
+        return window.Shop.productImagePath(filename);
     }
 
 
@@ -244,7 +244,7 @@
             try {
 
                 window.Shop.addToCart(
-                    { ...product, image: assetPath(product.image) },
+                    product,
                     quantity
                 );
 

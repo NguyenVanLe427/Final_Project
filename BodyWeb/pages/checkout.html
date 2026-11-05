@@ -8,6 +8,8 @@
 
     <script src="../js/main.js" defer></script>
     <script src="../js/catalog-store.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script src="../js/emailjs-config.js" defer></script>
     <script src="../js/checkout.js" defer></script>
     <link rel="stylesheet" href="../css/checkout.css">
 </head>
@@ -32,17 +34,17 @@
 
             <h2>Thông tin người nhận</h2>
 
-            <label>Họ và tên:</label>
-            <input type="text" id="customer-name" readonly required>
+            <label for="customer-name">Họ và tên:</label>
+            <input type="text" id="customer-name" name="customer-name" autocomplete="name" required>
 
-            <label>Số điện thoại:</label>
-            <input type="tel" id="customer-phone" readonly required>
+            <label for="customer-phone">Số điện thoại:</label>
+            <input type="tel" id="customer-phone" name="customer-phone" autocomplete="tel" required>
 
-            <label>Email:</label>
-            <input type="email" id="customer-email" readonly required>
+            <label for="customer-email">Email:</label>
+            <input type="email" id="customer-email" name="customer-email" autocomplete="email" required>
 
-            <label>Địa chỉ nhận hàng:</label>
-            <textarea id="customer-address" required></textarea>
+            <label for="customer-address">Địa chỉ nhận hàng:</label>
+            <textarea id="customer-address" name="customer-address" autocomplete="street-address" required></textarea>
 
             <h2>Phương thức thanh toán</h2>
 
@@ -97,6 +99,8 @@
             <h2>Đặt hàng thành công!</h2>
 
             <p id="order-code"></p>
+            <p id="email-status" role="status" aria-live="polite"></p>
+            <button type="button" id="retry-email" hidden>Thử gửi email lại</button>
 
             <a href="orders.html">
                 Xem lịch sử đơn hàng

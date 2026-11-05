@@ -24,7 +24,10 @@
             if (!Array.isArray(users)) {
                 throw new Error("Dữ liệu tài khoản không đúng định dạng.");
             }
-            return users;
+            return users.map((user) => ({
+                ...user,
+                username: (user.username || user.email || "").trim().toLowerCase()
+            }));
         }
 
         const legacyEmail = (localStorage.getItem("email") || "").trim().toLowerCase();
@@ -33,6 +36,8 @@
 
         return [{
             name: localStorage.getItem("hoTen") || "",
+            username: (localStorage.getItem("tenDangNhap") || legacyEmail).trim().toLowerCase(),
+            phone: localStorage.getItem("soDienThoai") || "",
             email: legacyEmail,
             password: legacyPassword
         }];
@@ -85,6 +90,18 @@
         localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
     }
 
+    function imageFilename(image) {
+        const path = String(image || "").replace(/\\/g, "/").split(/[?#]/, 1)[0];
+        return path.split("/").pop();
+    }
+
+    function productImagePath(image) {
+        const filename = imageFilename(image);
+        return filename
+            ? `${rootPrefix()}images/products/${encodeURIComponent(filename)}`
+            : "";
+    }
+
     function createOrderFromCart(details = {}) {
         if (sessionStorage.getItem(USER_SESSION_KEY) !== "true") {
             throw new Error("Vui lòng đăng nhập trước khi đặt hàng.");
@@ -129,7 +146,7 @@
             cart.push({
                 id: String(product.id),
                 name: product.name,
-                image: product.image,
+                image: imageFilename(product.image),
                 price: Number(product.price),
                 qty: quantity
             });
@@ -263,22 +280,16 @@
 
             try {
                 const users = readUsers();
-                const duplicate = users.find((user) =>
-                    user.email === email || (user.username || "").toLowerCase() === username
-                );
-                if (duplicate) {
-                    message.textContent = duplicate.email === email
-                        ? "Email này đã được đăng ký."
-                        : "Tên đăng nhập này đã được sử dụng.";
+                if (users.some((user) => user.username === username)) {
+                    message.textContent = "Tên đăng nhập này đã được sử dụng.";
+                    return;
+                }
+                if (users.some((user) => user.email === email)) {
+                    message.textContent = "Email này đã được đăng ký.";
                     return;
                 }
                 users.push({ name, username, phone, email, password });
                 saveUsers(users);
-                localStorage.setItem("hoTen", name);
-                localStorage.setItem("tenDangNhap", username);
-                localStorage.setItem("soDienThoai", phone);
-                localStorage.setItem("email", email);
-                localStorage.setItem("matKhau", password);
                 document.getElementById("login-username").value = username;
                 registerForm.reset();
                 showAuthTab("login");
@@ -313,9 +324,7 @@
                 }
 
                 const user = readUsers().find((account) =>
-                    ((account.username || "").toLowerCase() === identifier ||
-                        (account.email || "").toLowerCase() === identifier) &&
-                    account.password === password
+                    account.username === identifier && account.password === password
                 );
                 if (user) {
                     sessionStorage.removeItem(ADMIN_SESSION_KEY);
@@ -367,6 +376,7 @@
         writeOrders,
         createOrderFromCart,
         orderStatuses: ORDER_STATUSES,
-        formatPrice
+        formatPrice,
+        productImagePath
     };
 })();

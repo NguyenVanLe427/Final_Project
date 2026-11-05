@@ -33,7 +33,7 @@
                 const selected = state.outfit[product.slot] === product.id;
                 return `
                     <article class="product-card">
-                        <div class="product-card-image"><img src="../images/products/${product.image}" alt="${product.name}"></div>
+                        <div class="product-card-image"><img src="${window.Shop.productImagePath(product.image)}" alt="${product.name}"></div>
                         <div class="product-card-copy">
                             <h3>${product.name}</h3>
                             <p class="product-price">${window.Shop.formatPrice(product.price)}</p>
@@ -99,7 +99,7 @@
                     return;
                 }
                 try {
-                    chosen.forEach((product) => window.Shop.addToCart({ ...product, image: `../images/products/${product.image}` }, 1));
+                    chosen.forEach((product) => window.Shop.addToCart(product, 1));
                     notify(`Đã thêm ${chosen.length} sản phẩm vào giỏ hàng.`);
                 } catch (error) {
                     console.error("Không thể thêm bộ đồ vào giỏ hàng.", error);

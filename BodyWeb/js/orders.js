@@ -50,7 +50,7 @@
             order.items.forEach((item) => {
                 const row = createElement("div", "order-item");
                 const image = document.createElement("img");
-                image.src = item.image;
+                image.src = window.Shop.productImagePath(item.image);
                 image.alt = item.name;
                 const details = createElement("div");
                 details.append(

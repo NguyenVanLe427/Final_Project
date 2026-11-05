@@ -25,7 +25,7 @@
             emptyState.hidden = cart.length > 0;
             container.innerHTML = cart.map((item) => `
                 <article class="cart-item" data-cart-item="${item.id}">
-                    <img src="${item.image}" alt="${item.name}">
+                    <img src="${window.Shop.productImagePath(item.image)}" alt="${item.name}">
                     <div>
                         <h2>${item.name.replace(/[&<>"']/g, "")}</h2>
                         <p>${window.Shop.formatPrice(item.price)}</p>
