@@ -29,14 +29,14 @@
             </div>
 
             <p class="form-message" data-auth-message role="status" aria-live="polite"></p>
-            <form data-auth-form="login">
+            <form data-auth-form="login" autocomplete="off">
                 <h1>Chào mừng trở lại!</h1>
                 <p class="section-intro">Đăng nhập để tiếp tục mua sắm.</p>
                 <label for="login-username">Tên đăng nhập</label>
-                <input id="login-username" type="text" autocomplete="username" required>
+                <input id="login-username" type="text" autocomplete="off" required>
                 <label for="login-password">Mật khẩu</label>
                 <div class="password-box">
-                    <input id="login-password" type="password" autocomplete="current-password" required>
+                    <input id="login-password" type="password" autocomplete="new-password" required>
                     <button type="button" class="toggle-password" data-target="login-password" aria-label="Hiển thị mật khẩu">
                         👁
                     </button>

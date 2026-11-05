@@ -206,7 +206,10 @@
         if (!tabs.length) return;
 
         tabs.forEach((button) => {
-            button.addEventListener("click", () => showAuthTab(button.dataset.authTab));
+            button.addEventListener("click", () => {
+                clearLoginFields();
+                showAuthTab(button.dataset.authTab);
+            });
         });
 
         const registerForm = document.querySelector('[data-auth-form="register"]');
