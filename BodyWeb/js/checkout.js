@@ -8,20 +8,16 @@
         const bankInfo = document.getElementById("bank-info");
         const successMessage = document.getElementById("success-message");
         const orderInfo = document.getElementById("order-info");
-<<<<<<< HEAD
         const isAuthenticated = sessionStorage.getItem("mm_user_authenticated") === "true";
         if (!isAuthenticated) {
             window.location.replace("login.html?return=checkout.html");
             return;
         }
 
-        const cart = window.Shop.readCart();
-=======
         const bankSelect = document.getElementById("bank-select");
         const bankAccount = document.getElementById("bank-account");
         const bankOwner = document.getElementById("bank-owner");
         const accountResult = document.getElementById("account-result");
->>>>>>> 07693e6deea967c0069cb7573016eefc40b41704
         const message = document.createElement("p");
         let accountChecked = false;
 

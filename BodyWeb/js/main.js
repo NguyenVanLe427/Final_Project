@@ -195,9 +195,9 @@
     }
 
     function clearLoginFields() {
-        const email = document.getElementById("login-email");
+        const username = document.getElementById("login-username");
         const password = document.getElementById("login-password");
-        if (email) email.value = "";
+        if (username) username.value = "";
         if (password) password.value = "";
     }
 
@@ -259,35 +259,24 @@
             }
 
             try {
-<<<<<<< HEAD
                 const users = readUsers();
-                if (users.some((user) => user.email === email)) {
-                    message.textContent = "Email này đã được đăng ký.";
+                const duplicate = users.find((user) =>
+                    user.email === email || (user.username || "").toLowerCase() === username
+                );
+                if (duplicate) {
+                    message.textContent = duplicate.email === email
+                        ? "Email này đã được đăng ký."
+                        : "Tên đăng nhập này đã được sử dụng.";
                     return;
                 }
-                users.push({ name, email, password });
+                users.push({ name, username, phone, email, password });
                 saveUsers(users);
-                document.getElementById("login-email").value = email;
-=======
-                if ((localStorage.getItem("tenDangNhap") || "").toLowerCase() === username) {
-                    message.textContent = "Tên đăng nhập này đã được sử dụng.";
-                    return;
-                }
-
-                if ((localStorage.getItem("email") || "").toLowerCase() === email) {
-                    message.textContent = "Email này đã được đăng ký.";
-                    return;
-                }
-
                 localStorage.setItem("hoTen", name);
                 localStorage.setItem("tenDangNhap", username);
                 localStorage.setItem("soDienThoai", phone);
                 localStorage.setItem("email", email);
                 localStorage.setItem("matKhau", password);
-
                 document.getElementById("login-username").value = username;
-
->>>>>>> 07693e6deea967c0069cb7573016eefc40b41704
                 registerForm.reset();
                 showAuthTab("login");
 
@@ -304,11 +293,11 @@
             event.preventDefault();
 
             try {
-                const username = document.getElementById("login-username").value.trim().toLowerCase();
+                const identifier = document.getElementById("login-username").value.trim().toLowerCase();
                 const password = document.getElementById("login-password").value;
 
                 // Đăng nhập Admin
-                if (username === ADMIN_EMAIL) {
+                if (identifier === ADMIN_EMAIL) {
                     if (password !== ADMIN_PASSWORD) {
                         message.textContent = "Tên đăng nhập hoặc mật khẩu không chính xác.";
                         return;
@@ -320,16 +309,12 @@
                     return;
                 }
 
-<<<<<<< HEAD
-                const user = readUsers().find((account) => account.email === email && account.password === password);
+                const user = readUsers().find((account) =>
+                    ((account.username || "").toLowerCase() === identifier ||
+                        (account.email || "").toLowerCase() === identifier) &&
+                    account.password === password
+                );
                 if (user) {
-=======
-                // Kiểm tra tài khoản khách hàng
-                if (
-                    username === (localStorage.getItem("tenDangNhap") || "").toLowerCase() &&
-                    password === localStorage.getItem("matKhau")
-                ) {
->>>>>>> 07693e6deea967c0069cb7573016eefc40b41704
                     sessionStorage.removeItem(ADMIN_SESSION_KEY);
                     sessionStorage.setItem(USER_SESSION_KEY, "true");
                     window.location.href = loginDestination();
